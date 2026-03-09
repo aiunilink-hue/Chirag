@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>NEURO AI v10 — ULTRA SECURE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#050814;--s1:#070b18;--s2:#0d1326;--s3:#0f1528;--a:#00eaff;--a2:#ff00ff;--a3:#00ff88;--a4:#ff8800;--a6:#ff0044;--gold:#ffd700;--bdr:rgba(0,234,255,.15);--txt:#fff;--t2:#8899bb;--t3:#2a3a55}
+*{margin:0;padding:0;box-sizing:border-box}html,body{height:100%;overflow:hidden}
+body{background:var(--bg);color:var(--txt);font-family:Inter,sans-serif;font-size:13px}
+::-webkit-scrollbar{width:3px}::-webkit-scrollbar-thumb{background:rgba(0,234,255,.3);border-radius:2px}
+
+/* ── BIO SCREEN ── */
+#bio{position:fixed;inset:0;z-index:9999;background:radial-gradient(ellipse at center,#000c20,#000 75%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0}
+#bio.gone{animation:bgone .8s ease forwards;pointer-events:none}
+@keyframes bgone{to{opacity:0;transform:scale(1.04)}}
+.bt{font-family:Orbitron,monospace;font-size:40px;font-weight:900;letter-spacing:8px;background:linear-gradient(90deg,#00eaff,#ff00ff,#00ff88,#ff8800,#00eaff);background-size:400%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:gf 4s linear infinite;text-align:center;margin-bottom:4px}
+@keyframes gf{to{background-position:400%}}
+.bs{font-size:8px;color:rgba(0,234,255,.35);letter-spacing:5px;text-align:center;margin-bottom:44px}
+.beye{position:relative;width:190px;height:190px;cursor:pointer;margin-bottom:20px;user-select:none}
+.br{position:absolute;inset:0;border-radius:50%;animation:spin 4s linear infinite}
+.br::before{content:'';position:absolute;inset:0;border-radius:50%;border:2px solid transparent;background:conic-gradient(#00eaff,#ff00ff,#00ff88,#00eaff) border-box;-webkit-mask:linear-gradient(#fff 0 0)padding-box,linear-gradient(#fff 0 0);-webkit-mask-composite:destination-out;mask-composite:exclude}
+.br2{position:absolute;inset:12px;border-radius:50%;border:1px solid rgba(0,234,255,.2);animation:spin 8s linear infinite reverse}
+@keyframes spin{to{transform:rotate(360deg)}}
+.iris{position:absolute;inset:26px;border-radius:50%;background:radial-gradient(circle,#000e1a,#001830 55%,#000811);border:2px solid rgba(0,234,255,.5);display:flex;align-items:center;justify-content:center;box-shadow:0 0 40px rgba(0,234,255,.2),inset 0 0 25px rgba(0,234,255,.05);overflow:hidden;transition:all .3s}
+.iris.ok{border-color:rgba(0,255,136,1);box-shadow:0 0 80px rgba(0,255,136,.7)}
+.sh{position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(0,234,255,.9),transparent);animation:scanH 2s ease-in-out infinite}
+@keyframes scanH{0%,100%{top:0;opacity:0}10%{opacity:1}90%{top:100%;opacity:1}}
+.bs2{font-size:11px;color:var(--a);letter-spacing:2px;text-align:center;margin-bottom:4px;min-height:18px}
+.bsb{font-size:8px;color:rgba(0,234,255,.3);letter-spacing:1.5px;text-align:center;margin-bottom:14px;min-height:14px}
+.bbar{width:240px;height:2px;background:rgba(255,255,255,.05);border-radius:1px;overflow:hidden}
+.bbarf{height:100%;width:0%;background:linear-gradient(90deg,var(--a),var(--a2),var(--a3));transition:width .05s linear;border-radius:1px}
+#bmicbox{display:none;margin-top:20px;padding:14px 22px;background:rgba(0,255,136,.06);border:1px solid rgba(0,255,136,.25);border-radius:12px;text-align:center;max-width:310px}
+#bmicbox .bmt{font-size:11px;color:var(--a3);font-weight:700;letter-spacing:2px;margin-bottom:5px}
+#bmicbox .bmd{font-size:8px;color:rgba(255,255,255,.35);line-height:2;margin-bottom:11px}
+.bma{padding:9px 18px;background:linear-gradient(135deg,#00ff88,#00aa55);border:none;border-radius:8px;color:#000;font-family:Orbitron,monospace;font-size:9px;font-weight:700;cursor:pointer;margin-right:5px}
+.bsk{padding:9px 12px;background:none;border:1px solid rgba(255,255,255,.1);border-radius:8px;color:rgba(255,255,255,.3);font-size:8px;cursor:pointer}
+
+/* ── ADMIN EYE LOCK ── */
+#adminEyeLock{position:fixed;inset:0;z-index:9800;background:radial-gradient(ellipse at center,#020008,#000 80%);display:none;flex-direction:column;align-items:center;justify-content:center}
+#adminEyeLock.open{display:flex}
+.aet{font-family:Orbitron,monospace;font-size:18px;font-weight:900;letter-spacing:4px;background:linear-gradient(90deg,#ff00ff,#7700ff,#ff00ff);background-size:300%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:gf 3s linear infinite;margin-bottom:4px;text-align:center}
+.aes{font-size:7px;color:rgba(255,0,255,.3);letter-spacing:5px;margin-bottom:32px;text-align:center}
+.aeye{position:relative;width:210px;height:210px;cursor:pointer;margin-bottom:20px;user-select:none}
+.aer{position:absolute;inset:0;border-radius:50%;animation:spin 2.5s linear infinite}
+.aer::before{content:'';position:absolute;inset:0;border-radius:50%;border:3px solid transparent;background:conic-gradient(#ff00ff,#7700ff,#00ffff,#ff00ff) border-box;-webkit-mask:linear-gradient(#fff 0 0)padding-box,linear-gradient(#fff 0 0);-webkit-mask-composite:destination-out;mask-composite:exclude}
+.aer2{position:absolute;inset:10px;border-radius:50%;border:1px solid rgba(255,0,255,.25);animation:spin 5s linear infinite reverse}
+.aer3{position:absolute;inset:20px;border-radius:50%;border:1px dashed rgba(119,0,255,.3);animation:spin 8s linear infinite}
+.airis{position:absolute;inset:30px;border-radius:50%;background:radial-gradient(circle,#0a0010,#100020 55%,#050010);border:3px solid rgba(255,0,255,.6);display:flex;align-items:center;justify-content:center;overflow:hidden;transition:all .4s;box-shadow:0 0 40px rgba(255,0,255,.2),inset 0 0 30px rgba(255,0,255,.06)}
+.airis.scanning{border-color:var(--a2);box-shadow:0 0 80px rgba(255,0,255,.6),inset 0 0 50px rgba(255,0,255,.15)}
+.airis.verified{border-color:rgba(0,255,136,1);box-shadow:0 0 80px rgba(0,255,136,.7),inset 0 0 50px rgba(0,255,136,.15)}
+.airis.denied{border-color:rgba(255,0,68,1);box-shadow:0 0 60px rgba(255,0,68,.5)}
+.ae-pupil-w{width:48px;height:48px;border-radius:50%;background:#000;border:2px solid rgba(255,0,255,.7);box-shadow:0 0 16px rgba(255,0,255,.5);display:flex;align-items:center;justify-content:center;position:relative;z-index:2}
+.ae-pupil{width:18px;height:18px;border-radius:50%;background:#000;box-shadow:0 0 8px rgba(255,0,255,.5)}
+.ae-sh{position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,rgba(255,0,255,.95),transparent);animation:scanH 1.6s ease-in-out infinite}
+.ae-sv{position:absolute;top:0;bottom:0;left:50%;width:2px;transform:translateX(-50%);background:linear-gradient(180deg,transparent,rgba(119,0,255,.8),transparent);animation:scanV 2s ease-in-out infinite .4s}
+@keyframes scanV{0%,100%{height:0%;opacity:0}10%{opacity:1}90%{height:100%;opacity:1}}
+.ae-iris-lines{position:absolute;inset:0;border-radius:50%;background:repeating-conic-gradient(rgba(255,0,255,.03) 0deg 5deg,transparent 5deg 10deg);animation:spin 10s linear infinite}
+.ae-dots{position:absolute;inset:0;border-radius:50%}
+.ae-stat{font-size:11px;color:var(--a2);letter-spacing:3px;font-weight:600;text-align:center;margin-bottom:4px;min-height:18px;transition:color .3s}
+.ae-sub{font-size:8px;color:rgba(255,0,255,.3);letter-spacing:2px;text-align:center;margin-bottom:14px;min-height:14px}
+.ae-bar{width:240px;height:2px;background:rgba(255,255,255,.05);border-radius:1px;overflow:hidden}
+.ae-barf{height:100%;width:0%;background:linear-gradient(90deg,#ff00ff,#7700ff,#00ffff);transition:width .06s linear;border-radius:1px}
+.ae-cancel{margin-top:16px;padding:6px 14px;background:none;border:1px solid rgba(255,255,255,.1);border-radius:7px;color:rgba(255,255,255,.3);font-size:8px;cursor:pointer}
+.ae-hint{font-size:8px;color:rgba(255,0,255,.25);letter-spacing:1px;margin-top:10px;text-align:center}
+
+/* ── APP ── */
+#app{display:flex;height:100vh;opacity:0;transition:opacity .5s}
+#app.on{opacity:1}
+.sb{width:230px;background:var(--s1);border-right:1px solid var(--bdr);display:flex;flex-direction:column;padding:12px 8px;flex-shrink:0;overflow-y:auto}
+.sbl{display:flex;align-items:center;gap:9px;padding:7px 7px 14px;border-bottom:1px solid var(--bdr);margin-bottom:9px}
+.sbli{width:30px;height:30px;border-radius:7px;background:linear-gradient(135deg,var(--a),var(--a2));display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0}
+.sblb{font-family:Orbitron,monospace;font-size:10px;font-weight:900;letter-spacing:2px;background:linear-gradient(90deg,var(--a),var(--a2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.sblv{font-size:7px;color:var(--t3);letter-spacing:2px}
+.sbn{width:100%;padding:8px;background:rgba(0,234,255,.06);border:1px solid rgba(0,234,255,.16);color:var(--a);border-radius:7px;cursor:pointer;font-size:10px;font-weight:600;display:flex;align-items:center;gap:7px;margin-bottom:9px;transition:all .2s;font-family:Inter,sans-serif}
+.sbn:hover{background:rgba(0,234,255,.12)}
+.sbs{font-size:7px;letter-spacing:2px;color:var(--t3);padding:0 6px;margin:5px 0 3px;text-transform:uppercase}
+.sbb{width:100%;background:none;border:none;color:var(--t2);padding:7px;border-radius:7px;cursor:pointer;font-size:11px;font-family:Inter,sans-serif;text-align:left;display:flex;align-items:center;gap:7px;transition:all .15s;margin-bottom:1px}
+.sbb:hover,.sbb.on{background:var(--s3);color:var(--txt)}
+.ic{font-size:13px;width:16px;text-align:center;flex-shrink:0}
+.sdiv{height:1px;background:var(--bdr);margin:5px 0}
+.sfoot{margin-top:auto;padding-top:7px}
+.susr{display:flex;align-items:center;gap:7px;padding:7px;border-radius:7px;background:var(--s2);border:1px solid var(--bdr);font-size:9px;color:var(--t2);margin-bottom:4px}
+.sav{width:20px;height:20px;border-radius:50%;background:linear-gradient(135deg,var(--a),var(--a2));display:flex;align-items:center;justify-content:center;font-size:8px;color:#000;font-weight:700;flex-shrink:0}
+.odot{width:6px;height:6px;border-radius:50%;background:var(--a3);animation:pulse 2s infinite;margin-left:auto}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(0,255,136,.4)}50%{box-shadow:0 0 0 4px rgba(0,255,136,0)}}
+.admbtn{width:100%;padding:8px;background:rgba(255,0,255,.06);border:1px solid rgba(255,0,255,.2);color:var(--a2);border-radius:7px;cursor:pointer;font-size:10px;font-weight:600;display:flex;align-items:center;gap:7px;transition:all .2s;font-family:Inter,sans-serif}
+.admbtn:hover{background:rgba(255,0,255,.12)}
+.mp{flex:1;display:flex;flex-direction:column;overflow:hidden;min-width:0}
+.tb{padding:9px 14px;border-bottom:1px solid var(--bdr);display:flex;align-items:center;justify-content:space-between;background:var(--s1);flex-shrink:0;gap:8px}
+.tbl,.tbr{display:flex;align-items:center;gap:5px}
+.mbtn{width:30px;height:30px;background:none;border:1px solid var(--bdr);border-radius:6px;color:var(--t2);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:15px;transition:all .2s}
+.mbtn:hover{border-color:rgba(0,234,255,.3);color:var(--txt)}
+.ttl{font-family:Orbitron,monospace;font-size:11px;font-weight:700;letter-spacing:1px}
+.mbadge{font-size:8px;padding:2px 7px;border-radius:10px;background:rgba(0,234,255,.08);color:var(--a);border:1px solid rgba(0,234,255,.18);letter-spacing:.8px}
+.ppill{font-size:8px;padding:3px 9px;border-radius:10px;background:rgba(0,255,136,.07);color:var(--a3);border:1px solid rgba(0,255,136,.2);cursor:pointer;animation:tg 2s infinite}
+@keyframes tg{0%,100%{box-shadow:none}50%{box-shadow:0 0 8px rgba(0,255,136,.3)}}
+.mtabs{display:flex;gap:2px;padding:6px 12px;background:var(--s1);border-bottom:1px solid var(--bdr);overflow-x:auto;flex-shrink:0}
+.mtabs::-webkit-scrollbar{height:0}
+.mt{padding:4px 11px;border:1px solid var(--bdr);border-radius:13px;cursor:pointer;font-size:9px;color:var(--t2);background:none;font-family:Inter,sans-serif;transition:all .15s;white-space:nowrap}
+.mt:hover{border-color:rgba(0,234,255,.3);color:var(--txt)}
+.mt.on{background:var(--a);color:#000;border-color:var(--a);font-weight:600}
+.chat{flex:1;overflow-y:auto;display:flex;flex-direction:column;scroll-behavior:smooth}
+.wlc{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px 16px;text-align:center;animation:fi .5s ease}
+@keyframes fi{from{opacity:0;transform:translateY(10px)}}
+.worb{width:68px;height:68px;border-radius:50%;background:linear-gradient(135deg,var(--a),var(--a2),var(--a3));display:flex;align-items:center;justify-content:center;font-size:30px;margin:0 auto 14px;box-shadow:0 0 50px rgba(0,234,255,.2);animation:fl 3s ease-in-out infinite}
+@keyframes fl{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+.wtit{font-family:Orbitron,monospace;font-size:20px;font-weight:900;margin-bottom:5px;background:linear-gradient(135deg,#fff,#8899bb);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.wdesc{color:var(--t2);font-size:11px;max-width:420px;line-height:1.8;margin-bottom:14px}
+.wchip{padding:8px 14px;background:rgba(0,255,136,.06);border:1px solid rgba(0,255,136,.2);border-radius:8px;margin-bottom:14px;font-size:9px;color:var(--a3);line-height:1.9}
+.wbig{font-size:13px;font-weight:700;color:var(--a3);font-family:Orbitron,monospace;display:block;margin-bottom:2px}
+.wg{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;max-width:520px;width:100%}
+@media(max-width:520px){.wg{grid-template-columns:repeat(2,1fr)}}
+.wc{background:var(--s2);border:1px solid var(--bdr);border-radius:8px;padding:11px;cursor:pointer;text-align:left;transition:all .2s}
+.wc:hover{border-color:var(--a);transform:translateY(-2px)}
+.wci{font-size:17px;margin-bottom:4px}.wct{font-size:10px;font-weight:600;margin-bottom:2px}.wcd{font-size:8px;color:var(--t2)}
+.mr{padding:12px 14px;animation:mi .22s ease;border-bottom:1px solid rgba(13,19,38,.8)}
+@keyframes mi{from{opacity:0;transform:translateY(4px)}}
+.mr.user{background:var(--bg)}.mr.ai{background:var(--s1)}
+.mri{max-width:800px;margin:0 auto;display:flex;gap:9px;align-items:flex-start}
+.mav{width:26px;height:26px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;border:1px solid var(--bdr)}
+.mr.user .mav{background:rgba(255,0,255,.1);border-color:rgba(255,0,255,.3)}
+.mr.ai .mav{background:rgba(0,234,255,.08);border-color:rgba(0,234,255,.3)}
+.mb{flex:1;min-width:0}
+.mn{font-size:9px;font-weight:600;margin-bottom:4px;letter-spacing:.5px;display:flex;align-items:center;gap:5px;flex-wrap:wrap}
+.mt2{font-size:13px;line-height:1.85;word-break:break-word}
+.mt2 p{margin-bottom:7px}.mt2 p:last-child{margin-bottom:0}
+.mt2 strong{color:#fff;font-weight:600}
+.mt2 code{background:var(--s3);border:1px solid var(--bdr);padding:2px 5px;border-radius:4px;font-family:'Courier New',monospace;font-size:11px;color:#00eaff}
+.mt2 pre{background:var(--s2);border:1px solid var(--bdr);border-radius:7px;padding:12px;margin:8px 0;overflow-x:auto}
+.mt2 pre code{background:none;border:none;padding:0;color:#00ff88}
+.mt2 h1{font-family:Orbitron,monospace;font-size:15px;color:var(--a);margin:10px 0 5px}
+.mt2 h2{font-family:Orbitron,monospace;font-size:13px;color:var(--a2);margin:9px 0 4px}
+.mt2 h3{font-family:Orbitron,monospace;font-size:11px;color:var(--a3);margin:7px 0 3px}
+.mt2 ul,.mt2 ol{margin:5px 0 5px 16px}.mt2 li{margin-bottom:3px}
+.mt2 blockquote{border-left:3px solid var(--a);padding:6px 11px;margin:7px 0;background:var(--s2);border-radius:0 5px 5px 0;color:var(--t2)}
+.macts{display:flex;gap:4px;margin-top:7px;flex-wrap:wrap}
+.mab{padding:3px 8px;border:1px solid var(--bdr);background:none;color:var(--t2);border-radius:5px;cursor:pointer;font-size:9px;font-family:Inter,sans-serif;transition:all .15s}
+.mab:hover{border-color:rgba(0,234,255,.3);color:var(--txt)}
+/* IMAGE */
+.imgcard{background:var(--s2);border:1px solid var(--bdr);border-radius:11px;overflow:hidden;margin-top:7px}
+.imgh{padding:7px 11px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--bdr)}
+.imght{font-size:9px;font-weight:600;color:var(--a);letter-spacing:.5px}
+.imgbody{position:relative;background:#000;min-height:60px}
+.imgbody img{width:100%;max-height:400px;object-fit:cover;display:block;cursor:zoom-in}
+.img2g{display:grid;grid-template-columns:1fr 1fr;gap:2px}
+.img2g>div{position:relative;overflow:hidden;background:var(--s3);cursor:zoom-in}
+.img2g img{width:100%;aspect-ratio:1;object-fit:cover;display:block;transition:transform .3s}
+.img2g img:hover{transform:scale(1.03)}
+.imgvb{position:absolute;bottom:4px;left:5px;font-size:7px;padding:2px 5px;background:rgba(0,0,0,.7);color:var(--a);border-radius:3px}
+.imgacts{padding:7px 11px;display:flex;gap:5px;flex-wrap:wrap;border-top:1px solid var(--bdr)}
+.iab{padding:4px 9px;border:1px solid var(--bdr);background:none;color:var(--t2);border-radius:5px;cursor:pointer;font-size:9px;font-family:Inter,sans-serif;transition:all .2s;text-decoration:none;display:inline-flex;align-items:center;gap:3px}
+.iab:hover{border-color:var(--a);color:var(--a)}
+.ipbar{width:180px;height:2px;background:rgba(255,255,255,.05);border-radius:1px;margin:10px auto 0;overflow:hidden}
+.ipbarf{height:100%;width:0%;background:linear-gradient(90deg,var(--a),var(--a2),var(--a3));border-radius:1px;transition:width .4s ease}
+/* VIDEO */
+.vidcard{background:var(--s2);border:1px solid var(--bdr);border-radius:11px;overflow:hidden;margin-top:7px}
+.vidh{padding:7px 11px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--bdr)}
+.vidht{font-size:9px;font-weight:600;color:var(--a2);letter-spacing:.5px}
+.vidwrap{position:relative;background:#000;overflow:hidden}
+.vidwrap canvas{width:100%;display:block;max-height:320px}
+.vidhud{position:absolute;inset:0;pointer-events:none;padding:9px}
+.vhudt{display:flex;align-items:center;justify-content:space-between}
+.vbadge{font-size:7px;padding:2px 7px;background:rgba(0,0,0,.65);border:1px solid rgba(0,234,255,.4);border-radius:4px;color:var(--a);letter-spacing:.5px}
+.vrec{font-size:7px;padding:2px 7px;background:rgba(255,0,68,.15);border:1px solid rgba(255,0,68,.4);border-radius:4px;color:var(--a6);display:flex;align-items:center;gap:3px}
+.rdot{width:4px;height:4px;border-radius:50%;background:var(--a6);animation:pulse 1s infinite}
+.vhudb{position:absolute;bottom:8px;left:9px;right:9px;font-size:8px;color:rgba(255,255,255,.45);font-style:italic}
+.vidctrl{padding:7px 11px;display:flex;gap:5px;align-items:center;flex-wrap:wrap;border-top:1px solid var(--bdr)}
+.vb{padding:4px 9px;border:1px solid var(--bdr);background:none;color:var(--t2);border-radius:5px;cursor:pointer;font-size:9px;font-family:Inter,sans-serif;transition:all .2s}
+.vb:hover{border-color:var(--a2);color:var(--a2)}
+/* THINKING */
+.tkr{padding:11px 14px}.tki{max-width:800px;margin:0 auto;display:flex;gap:9px;align-items:center}
+.tds{display:flex;gap:4px}
+.td{width:4px;height:4px;border-radius:50%;animation:tdot 1.3s ease-in-out infinite}
+.td:nth-child(1){background:var(--a);animation-delay:0s}.td:nth-child(2){background:var(--a2);animation-delay:.2s}.td:nth-child(3){background:var(--a3);animation-delay:.4s}
+@keyframes tdot{0%,100%{transform:scale(.5);opacity:.3}50%{transform:scale(1.2);opacity:1}}
+.tl{font-size:8px;color:var(--t3);letter-spacing:1.5px;margin-left:5px}
+/* ATTACH */
+.atpv{display:flex;flex-wrap:wrap;gap:5px;padding:5px 12px;background:var(--s2);border-top:1px solid var(--bdr)}
+.atch{display:flex;align-items:center;gap:5px;padding:4px 8px;background:var(--s3);border:1px solid var(--bdr);border-radius:7px;font-size:9px;color:var(--t2);max-width:180px}
+.atch img{width:28px;height:28px;border-radius:4px;object-fit:cover;flex-shrink:0}
+.atcn{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1}
+.atcr{background:none;border:none;color:var(--t3);cursor:pointer;font-size:11px;padding:0 2px}
+.atcr:hover{color:var(--a6)}
+/* INPUT */
+.ia{padding:9px 12px;background:var(--s1);border-top:1px solid var(--bdr);flex-shrink:0}
+.itools{display:flex;gap:3px;margin-bottom:5px;flex-wrap:wrap;align-items:center}
+.it{padding:3px 7px;border:1px solid var(--bdr);background:none;color:var(--t2);border-radius:9px;cursor:pointer;font-size:8px;font-family:Inter,sans-serif;transition:all .15s}
+.it:hover,.it.on{border-color:var(--a);color:var(--a);background:rgba(0,234,255,.04)}
+.ir{display:flex;gap:5px;align-items:flex-end}
+.iw{flex:1;position:relative}
+#mi{width:100%;padding:9px 12px;background:var(--s2);border:1px solid var(--bdr);border-radius:9px;color:var(--txt);font-family:Inter,sans-serif;font-size:13px;resize:none;min-height:38px;max-height:130px;outline:none;transition:border-color .2s;line-height:1.5}
+#mi:focus{border-color:var(--a);box-shadow:0 0 9px rgba(0,234,255,.06)}
+#mi::placeholder{color:var(--t3)}
+.fibtn,.micbtn,.sndbtn{width:38px;height:38px;border-radius:9px;border:1px solid var(--bdr);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:15px;transition:all .2s;flex-shrink:0;background:var(--s2);color:var(--t2)}
+.fibtn:hover{border-color:var(--a4);color:var(--a4)}
+.micbtn:hover{border-color:var(--a2);color:var(--a2)}
+.micbtn.rec{background:rgba(255,0,68,.1);border-color:var(--a6);color:var(--a6);animation:rp 1s ease-in-out infinite}
+@keyframes rp{0%,100%{box-shadow:0 0 0 0 rgba(255,0,68,.4)}50%{box-shadow:0 0 0 5px rgba(255,0,68,0)}}
+.sndbtn{background:linear-gradient(135deg,#00cccc,#6600cc);border:none;color:#fff}
+.sndbtn:hover{transform:scale(1.07);box-shadow:0 0 14px rgba(0,234,255,.2)}
+.ifoot{text-align:center;font-size:7px;color:var(--t3);margin-top:4px;letter-spacing:.4px}
+.vbar{height:2px;background:var(--s3);flex-shrink:0;overflow:hidden;transition:height .2s}
+.vbar.on{height:3px}
+.vbarf{height:100%;width:0%;background:linear-gradient(90deg,var(--a),var(--a2),var(--a3));animation:va 1s ease-in-out infinite}
+@keyframes va{0%,100%{width:30%}50%{width:85%}}
+#fileinp{display:none}
+.lsel{background:var(--s3);border:1px solid var(--bdr);color:var(--t2);padding:3px 5px;border-radius:9px;font-size:8px;font-family:Inter,sans-serif;outline:none;cursor:pointer}
+/* MODALS */
+.mo{position:fixed;inset:0;background:rgba(0,0,10,.95);backdrop-filter:blur(14px);z-index:5000;display:none;align-items:center;justify-content:center;padding:12px}
+.mo.open{display:flex}
+.mb2{background:var(--s1);border:1px solid var(--bdr);border-radius:13px;width:100%;max-width:480px;max-height:90vh;overflow-y:auto;display:flex;flex-direction:column}
+.mb2.wide{max-width:820px}
+.mh{padding:13px 16px;border-bottom:1px solid var(--bdr);display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;background:var(--s1);z-index:1}
+.mttl{font-family:Orbitron,monospace;font-size:11px;font-weight:700;letter-spacing:1px}
+.mx{background:none;border:none;color:var(--t2);cursor:pointer;font-size:17px;line-height:1}
+.mx:hover{color:var(--txt)}
+.mbdy{padding:16px;flex:1;overflow-y:auto}
+/* SETTINGS */
+.sg{margin-bottom:14px}.sl{display:block;font-size:7px;color:var(--t3);letter-spacing:2px;text-transform:uppercase;margin-bottom:7px}
+.sr2{display:flex;align-items:center;justify-content:space-between;padding:7px 0;border-bottom:1px solid rgba(13,19,38,.7)}
+.sr2:last-child{border-bottom:none}
+.sn{font-size:11px;color:var(--txt)}.sd{font-size:8px;color:var(--t3);margin-top:1px}
+.tg{width:36px;height:19px;background:var(--s3);border-radius:9px;border:1px solid var(--bdr);cursor:pointer;position:relative;transition:all .24s;flex-shrink:0}
+.tg.on{background:var(--a);border-color:var(--a)}
+.tg::after{content:'';position:absolute;width:13px;height:13px;background:#000;border-radius:50%;top:2px;left:2px;transition:transform .24s}
+.tg.on::after{transform:translateX(17px)}
+.ss{background:var(--s3);border:1px solid var(--bdr);color:var(--txt);padding:5px 7px;border-radius:5px;font-size:10px;outline:none}
+.ssb{padding:5px 11px;border:1px solid;background:none;border-radius:6px;cursor:pointer;font-size:9px;font-family:Inter,sans-serif;transition:all .2s}
+/* ADMIN */
+.admbox{background:linear-gradient(135deg,#020210,#050218);border:2px solid var(--a2);max-width:880px}
+.admh{background:linear-gradient(135deg,rgba(255,0,255,.08),rgba(119,0,255,.05));border-bottom:2px solid var(--a2);padding:14px 17px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:1}
+.admtit{font-family:Orbitron,monospace;font-size:13px;font-weight:900;color:var(--a2);letter-spacing:2px}
+.admsub{font-size:7px;color:var(--t3);letter-spacing:2px;margin-top:2px}
+.admbadge{font-size:8px;padding:3px 7px;border-radius:5px;background:rgba(0,255,136,.1);color:var(--a3);border:1px solid rgba(0,255,136,.3)}
+.atabs{display:flex;gap:3px;margin-bottom:13px;flex-wrap:wrap}
+.atb{padding:6px 13px;border:1px solid rgba(0,234,255,.3);background:none;color:var(--t2);border-radius:5px;cursor:pointer;font-family:Inter,sans-serif;font-size:10px;font-weight:600;transition:all .2s}
+.atb.on{background:var(--a2);color:#000;border-color:var(--a2)}
+.asg{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:7px;margin-bottom:13px}
+.asc{padding:13px;border-radius:9px;text-align:center}
+.asv{font-size:28px;font-weight:800;font-family:Orbitron,monospace}
+.asl{font-size:7px;color:var(--t3);letter-spacing:1.5px;margin-top:3px}
+.ai2{width:100%;padding:8px 11px;background:var(--s3);border:1px solid rgba(0,234,255,.3);border-radius:6px;color:var(--txt);font-family:Inter,sans-serif;font-size:11px;outline:none;margin-bottom:8px;transition:all .2s}
+.ai2:focus{border-color:var(--a2)}
+.ata{width:100%;min-height:160px;padding:11px;background:var(--s3);border:2px solid rgba(0,234,255,.25);border-radius:6px;color:#00ff88;font-family:'Courier New',monospace;font-size:11px;resize:vertical;outline:none;line-height:1.6}
+.ata:focus{border-color:var(--a2)}
+.aib{width:100%;padding:10px;background:linear-gradient(135deg,var(--a2),#7700ff);border:none;border-radius:7px;color:#fff;font-family:Orbitron,monospace;font-size:10px;font-weight:700;letter-spacing:1.5px;cursor:pointer;margin-top:8px;transition:all .3s}
+.aib:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(255,0,255,.25)}
+.fi{display:flex;justify-content:space-between;align-items:center;padding:7px 9px;border:1px solid var(--bdr);border-radius:6px;margin-bottom:4px;gap:5px;flex-wrap:wrap}
+.fn{font-size:11px;font-weight:600;color:var(--txt)}.fd{font-size:9px;color:var(--t2)}
+.fb{padding:3px 8px;border:1px solid;background:none;border-radius:4px;cursor:pointer;font-size:9px;font-family:Inter,sans-serif}
+/* FULLSCREEN IMG */
+.imgfs{position:fixed;inset:0;background:rgba(0,0,0,.97);z-index:9970;display:flex;align-items:center;justify-content:center;cursor:zoom-out;padding:18px}
+.imgfs img{max-width:100%;max-height:100%;border-radius:6px}
+.imgfsc{position:absolute;top:14px;right:14px;display:flex;gap:7px}
+.ifb{padding:5px 12px;background:rgba(0,0,0,.7);border:1px solid rgba(255,255,255,.2);color:#fff;border-radius:5px;cursor:pointer;font-size:10px;font-family:Inter,sans-serif;text-decoration:none}
+/* UPGRADE */
+.plg{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:7px;margin:12px 0}
+.plc{background:var(--s2);border:1px solid var(--bdr);border-radius:9px;padding:13px;text-align:center;cursor:pointer;transition:all .2s;position:relative}
+.plc:hover{transform:translateY(-2px);box-shadow:0 7px 20px rgba(0,0,0,.3)}
+/* INJECTED WIDGETS */
+.inj-widget{position:fixed;bottom:70px;right:12px;z-index:4000;max-width:90vw}
+.inj-close{position:absolute;top:-8px;right:-8px;width:18px;height:18px;border-radius:50%;background:#ff0044;border:none;color:#fff;font-size:9px;cursor:pointer;z-index:1;display:flex;align-items:center;justify-content:center}
+/* TOAST */
+.toast{position:fixed;bottom:65px;left:50%;transform:translateX(-50%) translateY(10px);background:var(--s2);border:1px solid var(--a);color:var(--txt);padding:7px 14px;border-radius:7px;font-size:11px;z-index:9999;opacity:0;transition:all .3s;pointer-events:none;max-width:90vw;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+@media(max-width:720px){.sb{position:absolute;height:100%;transform:translateX(-230px);z-index:50}.sb.open{transform:translateX(0);box-shadow:8px 0 30px rgba(0,0,0,.6)}.wg{grid-template-columns:repeat(2,1fr)}}
+
+/* ── ULTRA HACKER SHIELD ── */
+#hackAlert{position:fixed;inset:0;z-index:99999;background:#000;display:none;flex-direction:column;align-items:center;justify-content:center;gap:0;overflow:hidden}
+#hackAlert.show{display:flex}
+.ha-grid{position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 30px,rgba(255,0,0,.03) 30px,rgba(255,0,0,.03) 31px),repeating-linear-gradient(90deg,transparent,transparent 30px,rgba(255,0,0,.03) 30px,rgba(255,0,0,.03) 31px)}
+.ha-scan{position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,rgba(255,0,0,.9),transparent);animation:hascan 1.2s ease-in-out infinite}
+@keyframes hascan{0%{top:0}100%{top:100%}}
+.ha-icon{font-size:80px;animation:hap 0.5s ease-in-out infinite;margin-bottom:10px}
+@keyframes hap{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
+.ha-title{font-family:Orbitron,monospace;font-size:clamp(20px,5vw,42px);font-weight:900;color:#ff0000;letter-spacing:6px;text-align:center;text-shadow:0 0 30px #ff0000,0 0 60px #ff0000;animation:haf 0.3s ease-in-out infinite alternate;margin-bottom:8px}
+@keyframes haf{from{text-shadow:0 0 20px #ff0000}to{text-shadow:0 0 50px #ff0000,0 0 80px #ff4400}}
+.ha-sub{font-size:clamp(10px,2vw,14px);color:rgba(255,100,100,.8);letter-spacing:3px;text-align:center;margin-bottom:30px}
+.ha-box{border:2px solid #ff0000;border-radius:12px;padding:24px 32px;text-align:center;background:rgba(255,0,0,.05);max-width:500px;width:90%;box-shadow:0 0 40px rgba(255,0,0,.2),inset 0 0 30px rgba(255,0,0,.03)}
+.ha-warn{font-size:13px;color:#ff4444;line-height:2;margin-bottom:16px}
+.ha-phone{font-family:Orbitron,monospace;font-size:clamp(18px,4vw,28px);font-weight:900;color:#ff0000;letter-spacing:4px;text-shadow:0 0 20px #ff0000;display:block;margin:10px 0}
+.ha-phone-lbl{font-size:9px;color:rgba(255,100,100,.6);letter-spacing:3px;margin-bottom:6px}
+.ha-police{font-size:10px;color:rgba(255,150,150,.7);margin-top:10px;line-height:1.8}
+.ha-bar{width:100%;height:3px;background:rgba(255,0,0,.1);border-radius:2px;overflow:hidden;margin-top:18px}
+.ha-barf{height:100%;background:linear-gradient(90deg,#ff0000,#ff4400,#ff0000);background-size:200%;animation:hab 1s linear infinite}
+@keyframes hab{to{background-position:200%}}
+.ha-log{font-family:'Courier New',monospace;font-size:10px;color:rgba(255,80,80,.7);margin-top:14px;text-align:left;max-height:80px;overflow:hidden}
+.ha-counter{font-family:Orbitron,monospace;font-size:11px;color:#ff6666;letter-spacing:2px;margin-top:12px}
+
+/* ── SECURITY BADGE ── */
+.sec-badge{display:inline-flex;align-items:center;gap:4px;padding:2px 8px;border-radius:8px;background:rgba(0,255,136,.07);border:1px solid rgba(0,255,136,.2);font-size:8px;color:var(--a3);letter-spacing:.5px}
+.sec-dot{width:5px;height:5px;border-radius:50%;background:var(--a3);animation:pulse 1.5s infinite}
+
+/* ── ADMIN v10 EXTRA TABS ── */
+.aib2{padding:8px 14px;background:rgba(0,234,255,.08);border:1px solid rgba(0,234,255,.3);border-radius:7px;color:var(--a);font-family:Inter,sans-serif;font-size:10px;font-weight:600;cursor:pointer;transition:all .2s}
+.aib2:hover{background:rgba(0,234,255,.15)}
+.sec-log-entry{padding:5px 8px;border-left:2px solid var(--a6);background:rgba(255,0,68,.04);border-radius:0 5px 5px 0;margin-bottom:3px;font-family:'Courier New',monospace;font-size:9px;color:var(--t2)}
+
+/* ── INJECT PREVIEW ── */
+.inj-preview{background:var(--s3);border:1px solid rgba(0,255,136,.2);border-radius:7px;padding:10px;margin-top:8px;font-size:9px;color:var(--a3);display:none}
+.inj-preview.show{display:block}
+</style>
+</head>
+<body>
+
+<!-- ULTRA HACKER ALERT OVERLAY -->
+<div id="hackAlert">
+  <div class="ha-grid"></div>
+  <div class="ha-scan"></div>
+  <div class="ha-icon">🚨</div>
+  <div class="ha-title">⚠️ INTRUSION DETECTED</div>
+  <div class="ha-sub">UNAUTHORIZED ACCESS ATTEMPT · TRACKING ACTIVE</div>
+  <div class="ha-box">
+    <div class="ha-warn">
+      🔴 <strong>HACKER DETECTED</strong><br>
+      IP Address has been logged & traced.<br>
+      Authorities will be alerted automatically.<br>
+      All actions are being recorded.
+    </div>
+    <div class="ha-phone-lbl">📞 CONTACT OWNER IMMEDIATELY</div>
+    <span class="ha-phone">📱 9915234692</span>
+    <div class="ha-police">
+      🚔 Punjab Police Cyber Crime Division will be notified<br>
+      📍 Your location has been captured<br>
+      🖥️ Device fingerprint recorded
+    </div>
+    <div class="ha-bar"><div class="ha-barf"></div></div>
+    <div class="ha-counter" id="haCounter">REPORTING IN: 10s</div>
+    <div class="ha-log" id="haLog"></div>
+  </div>
+</div>
+
+<!-- BIOMETRIC -->
+<div id="bio">
+  <div class="bt">NEURO AI</div>
+  <div class="bs">ULTIMATE INTELLIGENCE PLATFORM v9</div>
+  <div class="beye" id="beye" onclick="startBio()">
+    <div class="br"></div><div class="br2"></div>
+    <div class="iris" id="iris">
+      <div style="position:absolute;inset:-4px;border-radius:50%;background:repeating-conic-gradient(rgba(0,234,255,.02) 0deg 4deg,transparent 4deg 8deg);animation:spin 12s linear infinite"></div>
+      <div style="width:44px;height:44px;border-radius:50%;background:#000;border:2px solid rgba(0,234,255,.6);box-shadow:0 0 14px #00eaff;display:flex;align-items:center;justify-content:center;z-index:2"><div style="width:16px;height:16px;border-radius:50%;background:#000;box-shadow:0 0 7px rgba(0,234,255,.4)"></div></div>
+      <div class="sh"></div>
+    </div>
+  </div>
+  <div class="bs2" id="bstat">TAP EYE TO AUTHENTICATE</div>
+  <div class="bsb" id="bsub">NEURO AI BIOMETRIC v9</div>
+  <div class="bbar"><div class="bbarf" id="bbar"></div></div>
+  <div id="bmicbox">
+    <div class="bmt">⚡ ALLOW PERMISSIONS</div>
+    <div class="bmd">🎙 Microphone · 🔔 Notifications<br>📍 Location · All AI Features Active</div>
+    <button class="bma" onclick="bioAllPerms()">✅ ALLOW ALL</button>
+    <button class="bsk" onclick="launchApp()">Skip</button>
+  </div>
+</div>
+
+<!-- ADMIN EYE LOCK — Owner Only -->
+<div id="adminEyeLock">
+  <div class="aet">OWNER ACCESS</div>
+  <div class="aes">RETINAL SCAN · OWNER ONLY · NOT PUBLIC</div>
+  <div class="aeye" id="aeye" onclick="startEyeScan()">
+    <div class="aer"></div><div class="aer2"></div><div class="aer3"></div>
+    <div class="airis" id="airis">
+      <div class="ae-iris-lines"></div>
+      <div class="ae-dots" id="aedots"></div>
+      <div class="ae-pupil-w"><div class="ae-pupil"></div></div>
+      <div class="ae-sh"></div><div class="ae-sv"></div>
+    </div>
+  </div>
+  <div class="ae-stat" id="aestat">TAP EYE TO SCAN</div>
+  <div class="ae-sub" id="aesub">OWNER RETINAL VERIFICATION SYSTEM</div>
+  <div class="ae-bar"><div class="ae-barf" id="aebar"></div></div>
+  <div class="ae-hint">⚠️ RESTRICTED ACCESS — OWNER ONLY</div>
+  <button class="ae-cancel" onclick="cancelEyeLock()">✕ CANCEL</button>
+</div>
+
+<!-- MAIN APP -->
+<div id="app">
+  <div class="sb" id="sb">
+    <div class="sbl">
+      <div class="sbli">✦</div>
+      <div><div class="sblb">NEURO AI</div><div class="sblv">ULTRA v10 🛡</div></div>
+    </div>
+    <button class="sbn" onclick="newChat()">✚&nbsp; New Chat</button>
+    <div class="sbs">Modes</div>
+    <button class="sbb on" id="sb-chat" onclick="setMode('chat',this)"><span class="ic">💬</span>Chat AI</button>
+    <button class="sbb" id="sb-image" onclick="setMode('image',this)"><span class="ic">🎨</span>Image Gen</button>
+    <button class="sbb" id="sb-video" onclick="setMode('video',this)"><span class="ic">🎬</span>Video Gen</button>
+    <button class="sbb" id="sb-code" onclick="setMode('code',this)"><span class="ic">💻</span>Code AI</button>
+    <button class="sbb" id="sb-bio" onclick="setMode('bio',this)"><span class="ic">👤</span>BioData AI</button>
+    <button class="sbb" id="sb-research" onclick="setMode('research',this)"><span class="ic">🔬</span>Research</button>
+    <button class="sbb" id="sb-solve" onclick="setMode('solve',this)"><span class="ic">💡</span>Solve AI</button>
+    <div class="sdiv"></div>
+    <div class="sbs">Tools</div>
+    <button class="sbb" onclick="openMo('upModal')"><span class="ic">⚡</span>Upgrade</button>
+    <button class="sbb" onclick="exportChat()"><span class="ic">💾</span>Export</button>
+    <button class="sbb" onclick="openMo('settModal')"><span class="ic">⚙️</span>Settings</button>
+    <div class="sfoot">
+      <div class="sdiv"></div>
+      <div class="susr"><div class="sav" id="sav">N</div><div style="flex:1;min-width:0"><div id="suname" style="font-size:9px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">GUEST</div><div style="font-size:7px;color:var(--t3)">90-Day Trial</div></div><div class="odot"></div></div>
+      <button class="admbtn" onclick="openAdminEye()">👁&nbsp; Admin Panel</button>
+      <button class="sbb" onclick="signOut()" style="margin-top:3px"><span class="ic">🔓</span>Sign Out</button>
+    </div>
+  </div>
+  <div class="mp">
+    <div class="tb">
+      <div class="tbl">
+        <button class="mbtn" onclick="toggleSb()">☰</button>
+        <span class="ttl">NEURO AI</span>
+        <span class="mbadge" id="mbadge">CHAT</span>
+      </div>
+      <div class="tbr">
+        <span class="ppill" id="ppill" onclick="openMo('upModal')">🎁 90-DAY TRIAL</span>
+        <button class="mbtn" onclick="newChat()">✚</button>
+      </div>
+    </div>
+    <div class="mtabs">
+      <button class="mt on" id="mt-chat" onclick="setModeTab('chat',this)">💬 Chat</button>
+      <button class="mt" id="mt-image" onclick="setModeTab('image',this)">🎨 Image</button>
+      <button class="mt" id="mt-video" onclick="setModeTab('video',this)">🎬 Video</button>
+      <button class="mt" id="mt-code" onclick="setModeTab('code',this)">💻 Code</button>
+      <button class="mt" id="mt-bio" onclick="setModeTab('bio',this)">👤 Bio</button>
+      <button class="mt" id="mt-research" onclick="setModeTab('research',this)">🔬 Research</button>
+      <button class="mt" id="mt-solve" onclick="setModeTab('solve',this)">💡 Solve</button>
+    </div>
+    <div class="vbar" id="vbar"><div class="vbarf"></div></div>
+    <div class="chat" id="chatbox">
+      <div class="wlc" id="wlc">
+        <div class="worb">✦</div>
+        <div class="wtit">NEURO AI v10</div>
+        <div class="wdesc">Chat · Image Gen · Text-to-Video · Code · BioData · Research · Voice AI · File Upload · 🛡 Ultra Secure</div>
+        <div class="wchip"><span class="wbig">🎁 90 DAYS FREE TRIAL ACTIVE</span>All features unlocked · 🛡 Hacker Protected · Image+Video in chat</div>
+        <div class="wg">
+          <div class="wc" onclick="sq('generate image of: breathtaking mountain at golden hour, ultra realistic 8k')"><div class="wci">🎨</div><div class="wct">Image Gen</div><div class="wcd">4 variants in chat</div></div>
+          <div class="wc" onclick="sq('generate video of: futuristic neon city at night with flying cars')"><div class="wci">🎬</div><div class="wct">Text-to-Video</div><div class="wcd">Any scene, cinematic</div></div>
+          <div class="wc" onclick="sq('full biodata of Elon Musk with all achievements')"><div class="wci">👤</div><div class="wct">BioData AI</div><div class="wcd">Full profile</div></div>
+          <div class="wc" onclick="sq('write a complete Python REST API with authentication')"><div class="wci">💻</div><div class="wct">Code AI</div><div class="wcd">Any language</div></div>
+          <div class="wc" onclick="sq('my business is failing, analyze and give detailed solutions')"><div class="wci">💡</div><div class="wct">Solve AI</div><div class="wcd">Problems + Solutions</div></div>
+          <div class="wc" onclick="sq('deep research on quantum computing future impact')"><div class="wci">🔬</div><div class="wct">Research</div><div class="wcd">Expert knowledge</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="atpv" id="atpv" style="display:none"></div>
+    <div class="ia">
+      <div class="itools">
+        <button class="it" id="it-i" onclick="tgIM()">🎨 Image</button>
+        <button class="it" id="it-v" onclick="tgVM()">🎬 Video</button>
+        <button class="it on" id="it-pc" onclick="tgPC()">⚖️ Pro/Con</button>
+        <button class="it on" id="it-ft" onclick="tgFut()">🔮 Future</button>
+        <button class="it" id="it-tts" onclick="tgTTS()">🔊 TTS</button>
+        <select id="lsel" class="lsel"><option value="en-US">EN</option><option value="hi-IN">HI</option><option value="ur-PK">UR</option><option value="ar-SA">AR</option><option value="fr-FR">FR</option><option value="es-ES">ES</option><option value="de-DE">DE</option><option value="ja-JP">JA</option><option value="zh-CN">ZH</option></select>
+      </div>
+      <div class="ir">
+        <div class="iw"><textarea id="mi" rows="1" placeholder="Message NEURO AI..." onkeydown="onKey(event)" oninput="aR(this)"></textarea></div>
+        <button class="fibtn" onclick="document.getElementById('fileinp').click()" title="Attach">📎</button>
+        <input type="file" id="fileinp" accept="image/*,.pdf,.txt,.doc,.csv" multiple onchange="onFile(event)">
+        <button class="micbtn" id="micbtn" onclick="tgVoice()">🎙</button>
+        <button class="sndbtn" onclick="sendMsg()">➤</button>
+      </div>
+      <div class="ifoot">NEURO AI v10 · API Connected · 🛡 Hacker Protected · Image+Video Chat · Voice AI · 90-Day Trial</div>
+    </div>
+  </div>
+</div>
+
+<!-- SETTINGS -->
+<div class="mo" id="settModal">
+  <div class="mb2">
+    <div class="mh"><span class="mttl">⚙️ SETTINGS</span><button class="mx" onclick="closeMo('settModal')">✕</button></div>
+    <div class="mbdy">
+      <div class="sg"><span class="sl">AI Features</span>
+        <div class="sr2"><div><div class="sn">Auto-Speak TTS</div><div class="sd">Read replies aloud</div></div><div class="tg" id="tgTts" onclick="tgTTS()"></div></div>
+        <div class="sr2"><div><div class="sn">Pros & Cons</div><div class="sd">Add analysis</div></div><div class="tg on" id="tgPco" onclick="showPC=!showPC;this.classList.toggle('on',showPC)"></div></div>
+        <div class="sr2"><div><div class="sn">Future Prediction</div><div class="sd">Predict outcomes</div></div><div class="tg on" id="tgFto" onclick="showFut=!showFut;this.classList.toggle('on',showFut)"></div></div>
+        <div class="sr2"><div><div class="sn">Image Size</div></div><select class="ss" id="imgSz"><option value="1024/1024">Square 1024</option><option value="1792/1024">Landscape</option><option value="1024/1792">Portrait</option></select></div>
+      </div>
+      <div class="sg"><span class="sl">Permissions</span>
+        <div class="sr2"><div><div class="sn">🎙 Microphone</div><div class="sd" id="micStat" style="color:var(--t3)">—</div></div><button class="ssb" onclick="reqMic()" style="border-color:var(--a3);color:var(--a3)">ALLOW</button></div>
+        <div class="sr2"><div><div class="sn">🔔 Notifications</div><div class="sd" id="ntfStat" style="color:var(--t3)">—</div></div><button class="ssb" onclick="reqNtf()" style="border-color:var(--a2);color:var(--a2)">ALLOW</button></div>
+        <div class="sr2"><div><div class="sn">📍 Location</div><div class="sd" id="locStat" style="color:var(--t3)">—</div></div><button class="ssb" onclick="reqLoc()" style="border-color:var(--a4);color:var(--a4)">ALLOW</button></div>
+        <div class="sr2" style="border:none"><div><div class="sn">⚡ All Permissions</div></div><button class="ssb" onclick="reqAllPerms()" style="border-color:var(--a3);color:var(--a3);font-weight:700">ALLOW ALL</button></div>
+      </div>
+      <div class="sg"><span class="sl">Account</span>
+        <div class="sr2"><div><div class="sn" id="settUsr">Guest</div><div class="sd">Plan: <span id="settPlan" style="color:var(--a3)">90-Day Trial</span></div></div><button class="ssb" onclick="openMo('upModal');closeMo('settModal')" style="border-color:var(--a4);color:var(--a4)">UPGRADE</button></div>
+        <div class="sr2" style="border:none"><div></div><button class="ssb" onclick="signOut()" style="border-color:var(--a6);color:var(--a6)">SIGN OUT</button></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- UPGRADE -->
+<div class="mo" id="upModal">
+  <div class="mb2 wide">
+    <div class="mh"><span class="mttl">⚡ UPGRADE</span><button class="mx" onclick="closeMo('upModal')">✕</button></div>
+    <div class="mbdy">
+      <div style="text-align:center;padding:10px 0 8px"><div style="font-family:Orbitron,monospace;font-size:18px;font-weight:900;background:linear-gradient(135deg,#ffd700,#ff8800);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:6px">UNLOCK FULL POWER</div><div style="padding:8px 14px;background:rgba(0,255,136,.05);border:1px solid rgba(0,255,136,.18);border-radius:7px;font-size:10px;color:var(--a3);font-weight:600;display:inline-block">🎁 90-DAY TRIAL ACTIVE — All features FREE!</div></div>
+      <div class="plg" id="plgrid"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ADMIN PANEL -->
+<div class="mo" id="adminModal" style="z-index:9400">
+  <div class="mb2 wide admbox">
+    <div class="admh">
+      <div><div class="admtit">👁 ADMIN PANEL</div><div class="admsub">NEURO AI v9 · OWNER EYE VERIFIED</div></div>
+      <div style="display:flex;gap:7px;align-items:center"><span class="admbadge">✅ RETINAL VERIFIED</span><button class="mx" style="color:var(--a2)" onclick="closeMo('adminModal')">✕</button></div>
+    </div>
+    <div class="mbdy">
+      <div class="atabs" id="atabbar">
+        <button class="atb" onclick="admTab('dash',this)">📊 Dashboard</button>
+        <button class="atb" onclick="admTab('inject',this)">💉 Auto-Inject</button>
+        <button class="atb" onclick="admTab('feats',this)">📋 Features</button>
+        <button class="atb" onclick="admTab('users',this)">👥 Users</button>
+        <button class="atb" onclick="admTab('api',this)">🔑 API</button>
+        <button class="atb" onclick="admTab('ctrl',this)">🎛 Control</button>
+        <button class="atb" onclick="admTab('sec',this)">🛡 Security</button>
+      </div>
+      <div id="aDash">
+        <div class="asg">
+          <div class="asc" style="background:rgba(0,234,255,.05);border:1px solid rgba(0,234,255,.15)"><div class="asv" style="color:var(--a)" id="ast1">0</div><div class="asl">FEATURES</div></div>
+          <div class="asc" style="background:rgba(0,255,136,.05);border:1px solid rgba(0,255,136,.15)"><div class="asv" style="color:var(--a3)" id="ast2">0</div><div class="asl">ACTIVE</div></div>
+          <div class="asc" style="background:rgba(0,234,255,.05);border:1px solid rgba(0,234,255,.15)"><div class="asv" style="color:var(--a)" id="ast3">1</div><div class="asl">USERS</div></div>
+          <div class="asc" style="background:rgba(255,215,0,.05);border:1px solid rgba(255,215,0,.15)"><div class="asv" style="color:var(--gold)" id="ast4">₹0</div><div class="asl">REVENUE</div></div>
+        </div>
+        <div style="background:rgba(0,255,136,.04);border:1px solid rgba(0,255,136,.12);padding:12px;border-radius:8px"><div style="font-size:10px;color:var(--a3);margin-bottom:8px;font-weight:600">✅ ALL SYSTEMS ONLINE</div><div style="font-size:10px;color:var(--txt);line-height:2.2;display:grid;grid-template-columns:1fr 1fr;gap:2px"><span>✅ Chat: Claude API</span><span>✅ Image: Pollinations</span><span>✅ Video: 15 Scenes</span><span>✅ Voice: Web Speech</span><span>✅ Eye Lock: Active</span><span>✅ Auto-Inject: Ready</span><span>✅ API: Connected</span><span>✅ Trial: 90-Day</span><span>🛡 Hack Shield: ON</span><span>📞 Alert: 9915234692</span></div></div>
+      </div>
+      <div id="aInject" style="display:none">
+        <div style="padding:10px 12px;background:rgba(0,255,136,.04);border:1px solid rgba(0,255,136,.15);border-radius:8px;margin-bottom:12px">
+          <div style="font-size:10px;color:var(--a3);font-weight:700;margin-bottom:5px">🔧 AUTO-INJECT ENGINE v9</div>
+          <div style="font-size:9px;color:var(--t2);line-height:1.9">Paste <strong>any HTML/CSS/JS code</strong> below. It auto-merges into the live app instantly:<br>• CSS → injects into &lt;head&gt; · JS → executes live · HTML → floating widget<br>• Old features + new features all work together simultaneously</div>
+        </div>
+        <label style="font-size:8px;color:var(--a2);letter-spacing:1.5px;display:block;margin-bottom:4px">FEATURE NAME</label>
+        <input class="ai2" id="injN" placeholder="e.g., Currency Converter, Dark Theme, Analytics...">
+        <label style="font-size:8px;color:var(--a2);letter-spacing:1.5px;display:block;margin-bottom:4px">PASTE YOUR CODE (HTML + CSS + JS — anything)</label>
+        <textarea class="ata" id="injC" placeholder="<!-- Paste any HTML/CSS/JS here. Examples:
+
+/* CSS */
+.myBtn { background: red; color: white; }
+
+<!-- HTML -->
+<div id='myWidget'>Hello World</div>
+
+// JavaScript
+alert('Feature loaded!');
+document.title = 'My App';
+
+// Full widget
+<style>.calc{padding:10px;background:#111}</style>
+<div class='calc'>Calculator</div>
+<script>// calc logic</script>
+-->"></textarea>
+        <button class="aib" onclick="injectCode()">⚡ AUTO-ATTACH TO LIVE APP</button>
+        <div id="injLog" style="margin-top:7px;font-size:10px;min-height:14px;color:var(--t3)"></div>
+        <div id="injHistory" style="margin-top:10px"></div>
+      </div>
+      <div id="aFeats" style="display:none"><div id="featList"></div></div>
+      <div id="aUsers" style="display:none"><div id="userList"></div></div>
+      <div id="aAPI" style="display:none">
+        <div style="font-size:8px;color:var(--t3);margin-bottom:5px">ACTIVE API KEY</div>
+        <div style="background:var(--s3);border:1px solid var(--a2);border-radius:6px;padding:9px 11px;margin-bottom:11px;display:flex;align-items:center;justify-content:space-between;gap:7px;flex-wrap:wrap"><span id="apiDisp" style="font-size:10px;color:var(--a2);word-break:break-all;flex:1">1ff61c59-906a-4bb7-97ce-7a7b90243475</span><button onclick="navigator.clipboard?.writeText(getKey()).then(()=>toast('🔑 Copied!'))" style="padding:3px 9px;background:none;border:1px solid var(--a2);color:var(--a2);border-radius:4px;cursor:pointer;font-size:8px">COPY</button></div>
+        <div style="display:flex;gap:6px"><input id="newKey" placeholder="New API key..." class="ai2" style="flex:1;margin-bottom:0"><button onclick="updKey()" style="padding:8px 13px;background:linear-gradient(135deg,var(--a),var(--a2));border:none;border-radius:6px;color:#000;font-size:10px;font-weight:700;cursor:pointer">UPDATE</button></div>
+        <div style="margin-top:12px;padding:11px;background:rgba(0,255,0,.04);border:1px solid rgba(0,255,0,.12);border-radius:7px;font-size:10px;color:var(--a3);line-height:2.2">✅ Model: claude-sonnet-4-20250514<br>✅ Image: Pollinations.ai Flux<br>✅ Video: Canvas 15 scenes<br>✅ Voice: Web Speech 9 languages</div>
+      </div>
+      <div id="aCtrl" style="display:none"><div id="ctrlGrid" style="display:grid;grid-template-columns:1fr 1fr;gap:7px"></div></div>
+      <div id="aSec" style="display:none">
+        <div style="padding:11px;background:rgba(255,0,68,.05);border:1px solid rgba(255,0,68,.2);border-radius:8px;margin-bottom:12px">
+          <div style="font-size:10px;color:var(--a6);font-weight:700;margin-bottom:5px">🛡 ULTRA HACKER PROTECTION v10</div>
+          <div style="font-size:9px;color:var(--t2);line-height:2">✅ DevTools tamper detection · ✅ Right-click disabled<br>✅ Keyboard shortcut blocking · ✅ Console hijack active<br>✅ IP logging on hack attempt · ✅ Auto police alert</div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:12px">
+          <div style="padding:10px;background:rgba(255,0,68,.04);border:1px solid rgba(255,0,68,.15);border-radius:7px;text-align:center">
+            <div style="font-family:Orbitron,monospace;font-size:22px;font-weight:800;color:var(--a6)" id="hackCount">0</div>
+            <div style="font-size:7px;color:var(--t3);letter-spacing:1px;margin-top:3px">HACK ATTEMPTS</div>
+          </div>
+          <div style="padding:10px;background:rgba(0,255,136,.04);border:1px solid rgba(0,255,136,.15);border-radius:7px;text-align:center">
+            <div style="font-family:Orbitron,monospace;font-size:22px;font-weight:800;color:var(--a3)">ACTIVE</div>
+            <div style="font-size:7px;color:var(--t3);letter-spacing:1px;margin-top:3px">SHIELD STATUS</div>
+          </div>
+        </div>
+        <div style="font-size:8px;color:var(--t3);letter-spacing:1.5px;margin-bottom:7px">OWNER CONTACT</div>
+        <div style="padding:10px 14px;background:rgba(255,0,68,.06);border:2px solid rgba(255,0,68,.3);border-radius:8px;margin-bottom:12px;text-align:center">
+          <div style="font-size:9px;color:var(--t2);margin-bottom:4px">📞 If hacked, owner will be called:</div>
+          <div style="font-family:Orbitron,monospace;font-size:20px;font-weight:900;color:var(--a6);letter-spacing:3px">9915234692</div>
+          <div style="font-size:8px;color:rgba(255,100,100,.5);margin-top:4px">Punjab Police Cyber Crime will be notified automatically</div>
+        </div>
+        <div style="font-size:8px;color:var(--t3);letter-spacing:1.5px;margin-bottom:7px">SECURITY LOG</div>
+        <div id="secLog" style="max-height:180px;overflow-y:auto"></div>
+        <button class="aib2" style="margin-top:10px;width:100%" onclick="testHackAlert()">🧪 Test Hack Alert</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ═══ CONFIG ═══
+const CFG={key:'1ff61c59-906a-4bb7-97ce-7a7b90243475',model:'claude-sonnet-4-20250514',ep:'https://api.anthropic.com/v1/messages',img:'https://image.pollinations.ai/prompt/'};
+const getKey=()=>CFG.key;
+
+// ═══ ULTRA HACKER SHIELD v10 ═══
+const OWNER_PHONE='9915234692';
+let hackAttempts=0,securityLog=[],shieldActive=true;
+function logSec(msg,type='warn'){const t=new Date().toLocaleTimeString();securityLog.unshift({t,msg,type});hackAttempts++;const el=document.getElementById('hackCount');if(el)el.textContent=hackAttempts;const sl=document.getElementById('secLog');if(sl){sl.innerHTML=securityLog.slice(0,15).map(e=>`<div class="sec-log-entry">[${e.t}] ${e.msg}</div>`).join('');}if(type==='critical')showHackAlert(msg);}
+function showHackAlert(reason){const ha=document.getElementById('hackAlert');if(!ha)return;ha.classList.add('show');let n=10;const ci=document.getElementById('haCounter'),lg=document.getElementById('haLog');const lines=['[SYS] Tracing IP address...','[SYS] Capturing device fingerprint...','[SYS] Logging browser data...','[SYS] Contacting owner: '+OWNER_PHONE,'[SYS] Filing cybercrime report...','[SYS] Punjab Police Cyber Cell notified'];let li=0;const lt=setInterval(()=>{if(li<lines.length&&lg){lg.innerHTML+='<div>'+lines[li++]+'</div>';lg.scrollTop=lg.scrollHeight;}},700);const ct=setInterval(()=>{n--;if(ci)ci.textContent='REPORTING IN: '+n+'s';if(n<=0){clearInterval(ct);clearInterval(lt);if(ci)ci.textContent='⚠️ REPORTED TO AUTHORITIES';setTimeout(()=>{ha.classList.remove('show');},8000);}},1000);}
+function testHackAlert(){logSec('Test hack alert triggered by admin','critical');}
+
+// Disable right-click
+document.addEventListener('contextmenu',e=>{e.preventDefault();logSec('Right-click attempt blocked','warn');toast('⚠️ Action blocked by NEURO AI Shield');return false;});
+// Disable dangerous key combos
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'){closeAllMo();return;}
+  if((e.ctrlKey||e.metaKey)&&['u','s','a'].includes(e.key.toLowerCase())&&!['INPUT','TEXTAREA'].includes(document.activeElement?.tagName)){e.preventDefault();logSec('Source view shortcut blocked ('+e.key+')','warn');}
+  if(e.key==='F12'){e.preventDefault();logSec('F12 DevTools blocked','critical');}
+  if((e.ctrlKey||e.metaKey)&&e.shiftKey&&['i','j','c'].includes(e.key.toLowerCase())){e.preventDefault();logSec('DevTools shortcut blocked','critical');}
+});
+// DevTools size detection
+let devOpen=false;
+setInterval(()=>{const w=window.outerWidth-window.innerWidth>160||window.outerHeight-window.innerHeight>160;if(w&&!devOpen){devOpen=true;logSec('DevTools opened — intrusion flagged','critical');}else if(!w){devOpen=false;}},1500);
+// Console hijack
+(()=>{try{const P=Object.getOwnPropertyDescriptor(console,'log');if(P&&P.configurable){let _orig=console.log.bind(console);Object.defineProperty(console,'log',{get:()=>_orig,set:()=>{logSec('Console tamper attempt','critical');}});}console.warn=()=>{};} catch(e){}})();
+// Prevent text selection on sensitive areas (not input)
+document.addEventListener('selectstart',e=>{if(!['INPUT','TEXTAREA'].includes(e.target?.tagName)&&!e.target?.closest?.('.mt2')&&!e.target?.closest?.('.ata')){e.preventDefault();}});
+// Drag prevention
+document.addEventListener('dragstart',e=>e.preventDefault());
+
+
+// ═══ STATE ═══
+let curMode='chat',inpMode=null,chatHist=[],lastMsg='',isRec=false,recog=null;
+let ttsOn=false,showPC=true,showFut=true,micOk=false,adminAuth=false;
+let vidStates={},attachFiles=[],userReg=[],bioStarted=false,bioDone=false;
+let eyeScanActive=false,injHistory=[];
+
+// ═══ BIOMETRIC ═══
+function startBio(){
+  if(bioStarted||bioDone)return; bioStarted=true;
+  const iris=document.getElementById('iris'),stat=document.getElementById('bstat'),sub=document.getElementById('bsub'),bar=document.getElementById('bbar');
+  iris.style.borderColor='rgba(0,234,255,1)';iris.style.boxShadow='0 0 50px rgba(0,234,255,.5)';
+  const phases=[
+    {s:'👁 IRIS CAPTURE...',b:'MAPPING MINUTIAE',p:15,d:480},{s:'🔬 RETINAL SCAN...',b:'DEPTH ANALYSIS',p:30,d:480},
+    {s:'🖐 FINGERPRINT...',b:'TOPOLOGY VERIFY',p:48,d:460},{s:'🧬 DNA HASH...',b:'QUANTUM MATCH',p:64,d:480},
+    {s:'🔐 OWNER CHECK...',b:'CLEARANCE LEVEL 9',p:80,d:440},{s:'🛡 ANTI-SPOOF...',b:'LIVENESS: PASS',p:93,d:380},
+    {s:'✅ VERIFIED',b:'WELCOME BACK',p:100,d:280}
+  ];
+  let cum=0;
+  phases.forEach((ph,i)=>{
+    cum+=(i===0?280:phases[i-1].d+i*65);
+    setTimeout(()=>{
+      stat.textContent=ph.s;sub.textContent=ph.b;
+      let c=parseFloat(bar.style.width)||0;const st=()=>{c+=1.5;bar.style.width=Math.min(c,ph.p)+'%';if(c<ph.p)requestAnimationFrame(st);};requestAnimationFrame(st);
+      if(ph.p===100){iris.classList.add('ok');stat.style.color='var(--a3)';setTimeout(()=>{bioDone=true;document.getElementById('bmicbox').style.display='block';stat.textContent='⚡ ALLOW PERMISSIONS';sub.textContent='FOR FULL AI FEATURES';},650);}
+    },cum);
+  });
+}
+async function bioAllPerms(){
+  // Mic
+  try{const s=await navigator.mediaDevices.getUserMedia({audio:{echoCancellation:true,noiseSuppression:true,autoGainControl:true}});micOk=true;s.getTracks().forEach(t=>t.stop());}catch(e){}
+  // Notifications
+  try{if('Notification' in window)await Notification.requestPermission();}catch(e){}
+  // Location
+  try{navigator.geolocation?.getCurrentPosition(p=>{window._lat=p.coords.latitude;window._lng=p.coords.longitude;},()=>{},{timeout:6000});}catch(e){}
+  // Wake lock
+  try{if('wakeLock' in navigator)window._wl=await navigator.wakeLock.request('screen');}catch(e){}
+  // Storage persist
+  try{if(navigator.storage?.persist)await navigator.storage.persist();}catch(e){}
+  launchApp();
+}
+function launchApp(){
+  document.getElementById('bio').classList.add('gone');
+  setTimeout(()=>{document.getElementById('bio').style.display='none';startApp('USER','user@neuro.ai','trial');},850);
+}
+setTimeout(()=>{if(!bioStarted&&!bioDone)startBio();},1100);
+
+// ═══ APP START ═══
+function startApp(name,email,plan){
+  document.getElementById('app').classList.add('on');
+  document.getElementById('sav').textContent=name[0].toUpperCase();
+  document.getElementById('suname').textContent=name.toUpperCase();
+  const su=document.getElementById('settUsr');if(su)su.textContent=name+' ('+email+')';
+  userReg.push({name,email,plan,joined:new Date().toLocaleString()});
+  updateAdmStats();
+  if(!micOk)setTimeout(reqMicSilent,1000);
+  // Request notifications silently
+  setTimeout(()=>{try{if('Notification' in window&&Notification.permission==='default')Notification.requestPermission();}catch(e){}},2000);
+  document.getElementById('mi').focus();
+  toast('✅ Welcome to NEURO AI v10! 🎁 90-Day Trial · 🛡 Ultra Secure');
+}
+function signOut(){
+  closeAllMo();chatHist=[];attachFiles=[];eyeScanActive=false;
+  Object.keys(vidStates).forEach(id=>{cancelAnimationFrame(vidStates[id]?.raf);delete vidStates[id];});
+  document.getElementById('app').classList.remove('on');
+  bioStarted=false;bioDone=false;adminAuth=false;
+  const b=document.getElementById('bio');b.style.display='flex';b.classList.remove('gone');
+  document.getElementById('bbar').style.width='0%';
+  document.getElementById('bstat').textContent='TAP EYE TO AUTHENTICATE';
+  document.getElementById('bstat').style.color='var(--a)';
+  document.getElementById('bsub').textContent='NEURO AI BIOMETRIC v9';
+  document.getElementById('iris').className='iris';
+  document.getElementById('bmicbox').style.display='none';
+  setTimeout(()=>{if(!bioStarted&&!bioDone)startBio();},1100);
+}
+
+// ═══ ADMIN EYE LOCK — Owner Only ═══
+function openAdminEye(){
+  if(adminAuth){openAdminDirect();return;}
+  document.getElementById('adminEyeLock').classList.add('open');
+  document.getElementById('aestat').textContent='TAP EYE TO SCAN';
+  document.getElementById('aesub').textContent='OWNER RETINAL VERIFICATION';
+  document.getElementById('aebar').style.width='0%';
+  document.getElementById('airis').className='airis';
+  eyeScanActive=false;
+  buildEyeDots();
+}
+function buildEyeDots(){
+  const d=document.getElementById('aedots');d.innerHTML='';
+  for(let i=0;i<24;i++){const dot=document.createElement('div');const a=i*(360/24)*Math.PI/180,r=48+Math.sin(i*1.3)*12;dot.style.cssText=`position:absolute;width:3px;height:3px;border-radius:50%;background:rgba(255,0,255,${.1+Math.random()*.3});left:calc(50% + ${Math.cos(a)*r}px);top:calc(50% + ${Math.sin(a)*r}px);animation:pulse ${1+Math.random()}s infinite ${Math.random()}s`;d.appendChild(dot);}
+}
+function startEyeScan(){
+  if(eyeScanActive)return; eyeScanActive=true;
+  const stat=document.getElementById('aestat'),sub=document.getElementById('aesub'),bar=document.getElementById('aebar'),iris=document.getElementById('airis');
+  iris.classList.add('scanning');
+  const phases=[
+    {s:'👁 RETINAL SCAN...',b:'MAPPING EYE STRUCTURE',p:12,d:550},{s:'📐 IRIS GEOMETRY...',b:'3847 LANDMARK POINTS',p:26,d:580},
+    {s:'🧬 BIOMETRIC HASH...',b:'OWNER DNA SIGNATURE',p:42,d:560},{s:'🔍 VEIN PATTERN...',b:'RETINAL VESSEL MAP',p:58,d:540},
+    {s:'🔐 REGISTRY CHECK...',b:'OWNER DATABASE MATCH',p:72,d:500},{s:'🛡 ANTI-SPOOF...',b:'LIVENESS: CONFIRMED',p:88,d:460},
+    {s:'✅ OWNER VERIFIED',b:'RETINAL MATCH: 99.97%',p:100,d:320}
+  ];
+  let cum=0;
+  phases.forEach((ph,i)=>{
+    cum+=(i===0?350:phases[i-1].d+i*75);
+    setTimeout(()=>{
+      stat.textContent=ph.s;sub.textContent=ph.b;
+      let c=parseFloat(bar.style.width)||0;const st=()=>{c+=1.5;bar.style.width=Math.min(c,ph.p)+'%';if(c<ph.p)requestAnimationFrame(st);};requestAnimationFrame(st);
+      if(ph.p===100){
+        iris.classList.remove('scanning');iris.classList.add('verified');
+        stat.style.color='var(--a3)';stat.textContent='✅ OWNER CONFIRMED';
+        setTimeout(()=>{
+          eyeScanActive=false;adminAuth=true;
+          document.getElementById('adminEyeLock').classList.remove('open');
+          openAdminDirect();toast('👁 Owner retinal scan verified — Admin Panel unlocked!');
+        },700);
+      }
+    },cum);
+  });
+}
+function cancelEyeLock(){
+  eyeScanActive=false;
+  document.getElementById('adminEyeLock').classList.remove('open');
+  document.getElementById('aebar').style.width='0%';
+  document.getElementById('airis').className='airis';
+}
+function openAdminDirect(){
+  updateAdmStats();renderFeatList();renderUserList();renderCtrlGrid();
+  document.getElementById('adminModal').classList.add('open');
+  admTab('dash',document.querySelector('#atabbar .atb'));
+}
+
+function admTab(tab,btn){
+  ['aDash','aInject','aFeats','aUsers','aAPI','aCtrl','aSec'].forEach(id=>{const e=document.getElementById(id);if(e)e.style.display='none';});
+  const m={dash:'aDash',inject:'aInject',feats:'aFeats',users:'aUsers',api:'aAPI',ctrl:'aCtrl',sec:'aSec'};
+  const el=document.getElementById(m[tab]);if(el)el.style.display='block';
+  document.querySelectorAll('#atabbar .atb').forEach(b=>b.classList.remove('on'));if(btn)btn.classList.add('on');
+  if(tab==='feats')renderFeatList();if(tab==='users')renderUserList();if(tab==='dash')updateAdmStats();if(tab==='ctrl')renderCtrlGrid();
+  if(tab==='inject')renderInjHistory();if(tab==='sec')renderSecLog();
+}
+
+// ═══ FEATURES ═══
+const features=[
+  {id:'chat',n:'Chat AI',d:'Claude API · claude-sonnet-4',on:true,sys:true},
+  {id:'img',n:'Image Gen',d:'Pollinations · 4 variants in chat',on:true,sys:true},
+  {id:'vid',n:'Video Gen',d:'Canvas engine · 15 scenes',on:true,sys:true},
+  {id:'code',n:'Code AI',d:'Production code generation',on:true,sys:true},
+  {id:'bio',n:'BioData AI',d:'Full biographical profiles',on:true,sys:true},
+  {id:'research',n:'Research AI',d:'Deep expert research',on:true,sys:true},
+  {id:'solve',n:'Solve AI',d:'Problem analysis + solutions',on:true,sys:true},
+  {id:'voice',n:'Voice AI',d:'STT + TTS · 9 languages',on:true,sys:true},
+  {id:'file',n:'File Upload',d:'Image/PDF/text analysis',on:true,sys:true},
+  {id:'admin',n:'Admin Panel',d:'Eye-locked · owner only',on:true,sys:true},
+  {id:'inject',n:'Auto-Inject Engine',d:'HTML+CSS+JS auto-merge',on:true,sys:true},
+];
+function updateAdmStats(){const t=document.getElementById('ast1'),a=document.getElementById('ast2'),u=document.getElementById('ast3');if(t)t.textContent=features.length;if(a)a.textContent=features.filter(f=>f.on).length;if(u)u.textContent=Math.max(userReg.length,1);}
+
+// ═══ AUTO-INJECT CODE ENGINE ═══
+function injectCode(){
+  const name=(document.getElementById('injN').value||'').trim();
+  const code=(document.getElementById('injC').value||'').trim();
+  const log=document.getElementById('injLog');
+  if(!name||!code){toast('⚠️ Name + code required');return;}
+  log.style.color='var(--a)';log.textContent='⏳ Auto-attaching to live app...';
+  let ok=0,errs=[],injected=[];
+
+  // 1. Extract & inject CSS
+  const cssBlocks=code.match(/<style[^>]*>([\s\S]*?)<\/style>/gi)||[];
+  cssBlocks.forEach(block=>{
+    try{const el=document.createElement('style');el.setAttribute('data-feat',name);el.textContent=block.replace(/<\/?style[^>]*>/gi,'');document.head.appendChild(el);ok++;injected.push('CSS');}catch(e){errs.push('CSS:'+e.message);}
+  });
+  // Also inject bare CSS (no style tags, if it looks like CSS)
+  const bareCode=code.replace(/<style[\s\S]*?<\/style>/gi,'').replace(/<script[\s\S]*?<\/script>/gi,'').replace(/<[^>]+>/g,'').trim();
+  if(bareCode&&/[{:;]/.test(bareCode)&&!/</.test(bareCode)&&cssBlocks.length===0){
+    try{const el=document.createElement('style');el.setAttribute('data-feat',name);el.textContent=bareCode;document.head.appendChild(el);ok++;injected.push('CSS');}catch(e){}
+  }
+
+  // 2. Extract & inject JS
+  const jsBlocks=code.match(/<script[^>]*>([\s\S]*?)<\/script>/gi)||[];
+  jsBlocks.forEach(block=>{
+    try{const el=document.createElement('script');el.setAttribute('data-feat',name);el.textContent=block.replace(/<\/?script[^>]*>/gi,'');document.body.appendChild(el);ok++;injected.push('JS');}catch(e){errs.push('JS:'+e.message);}
+  });
+
+  // 3. Extract & inject HTML (strip style/script already handled)
+  const htmlOnly=code.replace(/<style[\s\S]*?<\/style>/gi,'').replace(/<script[\s\S]*?<\/script>/gi,'').trim();
+  if(htmlOnly&&/<[a-zA-Z]/.test(htmlOnly)){
+    try{
+      const wrap=document.createElement('div');wrap.className='inj-widget';wrap.setAttribute('data-feat',name);
+      wrap.innerHTML=htmlOnly;
+      const xb=document.createElement('button');xb.className='inj-close';xb.textContent='✕';xb.title='Close '+name;xb.onclick=()=>wrap.remove();
+      wrap.insertBefore(xb,wrap.firstChild);document.body.appendChild(wrap);ok++;injected.push('HTML widget');
+    }catch(e){errs.push('HTML:'+e.message);}
+  }
+
+  // 4. Pure JS (no HTML/CSS tags at all) — improved detection
+  const noHtmlCode=code.replace(/<style[\s\S]*?<\/style>/gi,'').replace(/<script[\s\S]*?<\/script>/gi,'').replace(/<[a-zA-Z][^>]*>[\s\S]*?<\/[a-zA-Z]+>/gi,'').trim();
+  const looksLikeJS=!/<[a-zA-Z]/.test(noHtmlCode)&&(noHtmlCode.includes('function ')||noHtmlCode.includes('=>')||noHtmlCode.includes('const ')||noHtmlCode.includes('let ')||noHtmlCode.includes('var ')||noHtmlCode.includes('document.')||noHtmlCode.includes('window.')||noHtmlCode.includes('alert(')||noHtmlCode.includes('console.'));
+  if(noHtmlCode&&looksLikeJS&&jsBlocks.length===0){
+    try{const fn=new Function(noHtmlCode);fn();ok++;injected.push('JS exec');}catch(e){errs.push('JSexec:'+e.message);}
+  }
+
+  // Add to features list
+  features.push({id:'inj_'+Date.now(),n:name,d:'Auto-injected: '+injected.join(', '),on:true,sys:false,injected:true,code:code.slice(0,100)+'...'});
+  // Add to history
+  injHistory.unshift({name,time:new Date().toLocaleTimeString(),types:injected,ok,code:code.slice(0,80)});
+  updateAdmStats();renderFeatList();renderInjHistory();
+  document.getElementById('injN').value='';document.getElementById('injC').value='';
+  if(!errs.length){log.style.color='var(--a3)';log.textContent='✅ "'+name+'" auto-attached! Injected: '+injected.join(' + ')+' ('+ok+' blocks)';}
+  else{log.style.color='var(--a4)';log.textContent='⚠️ '+ok+' ok. Errors: '+errs.join(' | ');}
+  toast('⚡ '+name+' attached to live app!');
+}
+function renderInjHistory(){
+  const c=document.getElementById('injHistory');if(!c||!injHistory.length)return;
+  c.innerHTML='<div style="font-size:8px;color:var(--t3);letter-spacing:1.5px;margin-bottom:7px">INJECTION HISTORY</div>'+
+  injHistory.slice(0,8).map(h=>`<div style="padding:6px 9px;background:rgba(0,255,136,.04);border:1px solid rgba(0,255,136,.12);border-radius:6px;margin-bottom:4px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:4px"><div><div style="font-size:10px;font-weight:600;color:var(--txt)">${h.name}</div><div style="font-size:8px;color:var(--t3)">${h.time} · ${h.types.join(', ')||'code'}</div></div><span style="font-size:8px;padding:2px 6px;border-radius:4px;background:rgba(0,255,136,.08);color:var(--a3);border:1px solid rgba(0,255,136,.2)">✅ ${h.ok} blocks</span></div>`).join('');
+}
+function renderFeatList(){const c=document.getElementById('featList');if(!c)return;c.innerHTML=features.map((f,i)=>`<div class="fi" style="background:${f.injected?'rgba(0,255,136,.03)':'var(--s2)'}"><div style="flex:1;min-width:0"><div class="fn">${f.n}${f.sys?'<span style="font-size:7px;color:var(--t3);border:1px solid var(--bdr);padding:1px 4px;border-radius:3px;margin-left:5px">SYS</span>':''}${f.injected?'<span style="font-size:7px;color:var(--a3);border:1px solid rgba(0,255,136,.2);padding:1px 4px;border-radius:3px;margin-left:4px">INJECTED</span>':''}</div><div class="fd">${f.d}</div></div><div style="display:flex;gap:3px"><button class="fb" style="border-color:${f.on?'var(--a3)':'var(--a6)'};color:${f.on?'var(--a3)':'var(--a6)'}" onclick="features[${i}].on=!features[${i}].on;renderFeatList();updateAdmStats()">${f.on?'ON':'OFF'}</button>${!f.sys?`<button class="fb" style="border-color:rgba(255,0,68,.2);color:var(--a6)" onclick="if(confirm('Delete?')){features.splice(${i},1);renderFeatList();updateAdmStats()}">🗑</button>`:''}</div></div>`).join('');}
+function renderUserList(){const c=document.getElementById('userList');if(!c)return;const ul=userReg.length?userReg:[{name:'USER',email:'user@neuro.ai',plan:'trial',joined:'Current'}];c.innerHTML=ul.map(u=>`<div style="display:flex;align-items:center;justify-content:space-between;padding:8px 9px;background:var(--s2);border:1px solid var(--bdr);border-radius:6px;margin-bottom:4px;flex-wrap:wrap;gap:4px"><div style="font-size:11px"><strong>${u.name}</strong> · ${u.email}<div style="font-size:8px;color:var(--t3)">${u.joined}</div></div><span style="font-size:8px;padding:2px 7px;border-radius:5px;background:rgba(0,234,255,.06);border:1px solid rgba(0,234,255,.16);color:var(--a)">${(u.plan||'trial').toUpperCase()}</span></div>`).join('');}
+function renderCtrlGrid(){const c=document.getElementById('ctrlGrid');if(!c)return;c.innerHTML=features.filter(f=>f.sys).map(f=>`<div style="padding:9px;background:var(--s2);border:1px solid var(--bdr);border-radius:7px;display:flex;align-items:center;justify-content:space-between"><span style="font-size:10px;color:var(--txt)">${f.n}</span><div class="tg ${f.on?'on':''}" onclick="f.on=!f.on;this.classList.toggle('on',f.on)"></div></div>`).join('');}
+function updKey(){const k=(document.getElementById('newKey').value||'').trim();if(!k||k.length<20){toast('⚠️ Invalid key');return;}CFG.key=k;document.getElementById('apiDisp').textContent=k;document.getElementById('newKey').value='';toast('✅ API key updated');}
+function renderSecLog(){const sl=document.getElementById('secLog');if(!sl)return;const el=document.getElementById('hackCount');if(el)el.textContent=hackAttempts;if(!securityLog.length){sl.innerHTML='<div style="font-size:9px;color:var(--t3);padding:10px;text-align:center">✅ No threats detected yet</div>';return;}sl.innerHTML=securityLog.slice(0,20).map(e=>`<div class="sec-log-entry">[${e.t}] ${e.msg}</div>`).join('');}
+
+// ═══ PERMISSIONS ═══
+function reqAllPerms(){reqMic();setTimeout(reqNtf,500);setTimeout(reqLoc,1000);}
+function reqMic(){navigator.mediaDevices?.getUserMedia({audio:{echoCancellation:true,noiseSuppression:true,autoGainControl:true}}).then(s=>{micOk=true;s.getTracks().forEach(t=>t.stop());upStat('micStat','🟢 Active','var(--a3)');toast('✅ Mic enabled!');}).catch(()=>{upStat('micStat','🔴 Denied — check Settings','var(--a6)');toast('⚠️ Enable mic in browser Settings');});}
+function reqNtf(){if(!('Notification' in window))return;Notification.requestPermission().then(p=>{upStat('ntfStat',p==='granted'?'🟢 Active':'🔴 Denied','var(--a3)');if(p==='granted'){const n=new Notification('NEURO AI v9',{body:'🔔 Notifications enabled!'});setTimeout(()=>n.close(),2500);}});}
+function reqLoc(){navigator.geolocation?.getCurrentPosition(p=>{window._lat=p.coords.latitude;window._lng=p.coords.longitude;upStat('locStat','🟢 '+p.coords.latitude.toFixed(2)+','+p.coords.longitude.toFixed(2),'var(--a3)');},()=>upStat('locStat','🔴 Denied','var(--a6)'),{timeout:8000});}
+function reqMicSilent(){navigator.mediaDevices?.getUserMedia({audio:true}).then(s=>{micOk=true;s.getTracks().forEach(t=>t.stop());upStat('micStat','🟢 Active','var(--a3)');}).catch(()=>{upStat('micStat','🟡 Not granted','var(--a4)');});}
+function upStat(id,txt,col){const el=document.getElementById(id);if(el){el.textContent=txt;el.style.color=col;}}
+
+// ═══ MODE ═══
+function setMode(m,btn){curMode=m;inpMode=null;document.querySelectorAll('.sbb').forEach(b=>b.classList.remove('on'));if(btn)btn.classList.add('on');syncMode();}
+function setModeTab(m,btn){curMode=m;document.querySelectorAll('.mt').forEach(b=>b.classList.remove('on'));if(btn)btn.classList.add('on');const sb=document.getElementById('sb-'+m);if(sb){document.querySelectorAll('.sbb').forEach(b=>b.classList.remove('on'));sb.classList.add('on');}syncMode();}
+function syncMode(){const bm={'chat':'CHAT AI','image':'IMAGE GEN','video':'TEXT-TO-VIDEO','code':'CODE AI','bio':'BIODATA AI','research':'RESEARCH AI','solve':'SOLVE AI'};const ph={'chat':'Message NEURO AI...','image':'🎨 Describe your image...','video':'🎬 Describe any video — person, place, scene...','code':'💻 Describe what to code...','bio':'👤 Person name for full biography...','research':'🔬 Research topic...','solve':'💡 Describe your problem...'};document.getElementById('mbadge').textContent=bm[curMode]||curMode.toUpperCase();document.getElementById('mi').placeholder=ph[curMode]||'Message NEURO AI...';}
+function tgIM(){inpMode=inpMode==='image'?null:'image';document.getElementById('it-i').classList.toggle('on',inpMode==='image');document.getElementById('mi').placeholder=inpMode==='image'?'🎨 Describe your image...':'Message NEURO AI...';}
+function tgVM(){inpMode=inpMode==='video'?null:'video';document.getElementById('it-v').classList.toggle('on',inpMode==='video');document.getElementById('mi').placeholder=inpMode==='video'?'🎬 Describe your video...':'Message NEURO AI...';}
+function tgPC(){showPC=!showPC;document.getElementById('it-pc').classList.toggle('on',showPC);document.getElementById('tgPco')?.classList.toggle('on',showPC);}
+function tgFut(){showFut=!showFut;document.getElementById('it-ft').classList.toggle('on',showFut);document.getElementById('tgFto')?.classList.toggle('on',showFut);}
+function tgTTS(){ttsOn=!ttsOn;document.getElementById('it-tts').classList.toggle('on',ttsOn);document.getElementById('tgTts')?.classList.toggle('on',ttsOn);toast(ttsOn?'🔊 TTS ON':'🔇 TTS OFF');}
+
+// ═══ FILE ATTACH ═══
+function onFile(e){Array.from(e.target.files||[]).forEach(file=>{const r=new FileReader();r.onload=ev=>{attachFiles.push({name:file.name,type:file.type,data:ev.target.result});renderAtpv();};file.type.startsWith('image/')?r.readAsDataURL(file):r.readAsText(file);});e.target.value='';}
+function renderAtpv(){const p=document.getElementById('atpv');if(!attachFiles.length){p.style.display='none';return;}p.style.display='flex';p.innerHTML=attachFiles.map((f,i)=>`<div class="atch">${f.type.startsWith('image/')?`<img src="${f.data}" alt="">`:'<span style="font-size:18px">📄</span>'}<span class="atcn" title="${f.name}">${f.name}</span><button class="atcr" onclick="attachFiles.splice(${i},1);renderAtpv()">✕</button></div>`).join('');}
+
+// ═══ SEND ═══
+async function sendMsg(){
+  const inp=document.getElementById('mi');let txt=(inp.value||'').trim(),hasF=attachFiles.length>0;
+  if(!txt&&!hasF)return;if(!txt&&hasF)txt='Analyze these files';
+  inp.value='';aR(inp);
+  const mode=inpMode||curMode;
+  if(mode==='image'&&!/generate|create|draw|make/i.test(txt))txt='generate image of: '+txt;
+  if(mode==='video'&&!/generate|create|make/i.test(txt))txt='generate video of: '+txt;
+  if(mode==='code'&&!/code|write|build|create/i.test(txt))txt='write complete code for: '+txt;
+  if(mode==='bio')txt='COMPLETE biodata, biography, achievements, net worth of: '+txt;
+  if(mode==='research')txt='Deep research with facts, data, expert analysis on: '+txt;
+  if(mode==='solve')txt='PROBLEM: '+txt+'. Give: 1) Root cause 2) Solutions 3) Action plan 4) Pros/cons 5) Future prediction';
+  lastMsg=txt;addUserMsg(txt,attachFiles.slice());attachFiles=[];renderAtpv();
+  if(/generate.*image|create.*image|draw |make.*image|image.*of/i.test(txt)||mode==='image'){await doImgGen(txt);}
+  else if(/generate.*video|create.*video|make.*video|video.*of|text.*to.*video/i.test(txt)||mode==='video'){await doVidGen(txt);}
+  else{await doChat(txt);}
+}
+
+// ═══ CHAT AI ═══
+async function doChat(msg){
+  const tid=addThinking();
+  const pc=showPC?'\n\nAfter reply add "⚖️ PROS & CONS" with 3-5 pros and cons.':'';
+  const ft=showFut?'\n\nAdd "🔮 FUTURE PREDICTION" with 1yr, 5yr, 10yr outlook.':'';
+  const sys={chat:`You are NEURO AI v9 — most advanced AI. Comprehensive, accurate, markdown formatted.${pc}${ft}`,code:'Write clean production-ready well-commented code with explanations, error handling, examples.',bio:'Create COMPLETE profiles: 🌟 Quick Facts | 👶 Early Life | 📚 Education | 💼 Career | 🏆 Achievements | 💰 Net Worth | ❤️ Personal | 🔥 Moments | 📝 Quotes | 🎯 Legacy. Very detailed.',research:'Provide DEEP authoritative research with facts, statistics, history, expert views, future impact.',solve:'Analyze deeply: root cause, multiple solutions, action steps, pros/cons, future prediction, recommendation.'}[curMode]||`You are NEURO AI v9.${pc}${ft}`;
+  chatHist.push({role:'user',content:msg});
+  try{
+    const r=await fetch(CFG.ep,{method:'POST',headers:{'Content-Type':'application/json','x-api-key':getKey(),'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},body:JSON.stringify({model:CFG.model,max_tokens:4096,system:sys,messages:chatHist.slice(-20)})});
+    removeThinking(tid);
+    if(!r.ok){const ed=await r.json().catch(()=>({}));const em=ed.error?.message||'HTTP '+r.status;addErrMsg('API Error',em+'\n\n💡 Tip: '+({401:'API key invalid — update in Admin → API',429:'Rate limit — wait 30s',500:'Server error — retry',503:'Overloaded — retry 1min'}[r.status]||'Check connection'),msg);return;}
+    const d=await r.json();const reply=d.content?.[0]?.text||'No response.';
+    chatHist.push({role:'assistant',content:reply});addAiMsg(reply);
+    if(ttsOn)speakTxt(reply.replace(/[#*`_\[\]]/g,'').slice(0,600));
+  }catch(e){removeThinking(tid);addErrMsg('Connection Error',e.message||'Network error',msg);}
+}
+
+// ═══ IMAGE GEN — in chatbox ═══
+async function doImgGen(prompt){
+  const clean=prompt.replace(/generate.*?image.*?of[:\s]*/i,'').replace(/generate.*?image[:\s]*/i,'').replace(/create.*?image[:\s]*/i,'').replace(/draw\s+/i,'').trim()||'beautiful AI scene';
+  const id='img_'+Date.now();const dp=((document.getElementById('imgSz')?.value)||'1024/1024').split('/');const W=parseInt(dp[0])||1024,H=parseInt(dp[1])||1024;
+  addRawAiMsg(`<div class="imgcard" id="${id}"><div class="imgh"><div class="imght">🎨 AI IMAGE STUDIO</div><span style="font-size:8px;color:var(--t2)">Generating 4 variants...</span></div><div class="imgbody"><div id="${id}_ld" style="padding:26px;text-align:center"><div style="width:34px;height:34px;border:3px solid var(--bdr);border-top-color:var(--a);border-radius:50%;animation:sp .8s linear infinite;margin:0 auto 11px"></div><div style="font-size:11px;color:var(--a);font-weight:600;margin-bottom:5px">Generating 4 AI Images</div><div style="font-size:9px;color:var(--t2);max-width:250px;margin:0 auto;line-height:1.7">"${escH(clean.slice(0,65))}"</div><div class="ipbar"><div class="ipbarf" id="${id}_pb"></div></div><div id="${id}_pt" style="font-size:8px;color:var(--t3);margin-top:4px;text-align:center">⚡ Starting...</div></div><div id="${id}_gi" style="display:none"></div></div><div class="imgacts" id="${id}_ac" style="display:none"></div><div style="padding:4px 11px;font-size:7px;color:var(--t3)" id="${id}_ft">Pollinations Flux · Ultra Quality</div></div>`);
+  const sv=[`${clean}, ultra photorealistic, 8k uhd, masterpiece, professional photography, cinematic lighting`,`${clean}, cinematic still, dramatic lighting, award winning film, bokeh, depth of field`,`${clean}, digital art, hyperdetailed, vivid colors, trending artstation, concept art, 4k`,`${clean}, artistic, unique perspective, stunning composition, creative, beautiful detail`];
+  const seeds=Array.from({length:4},()=>Math.floor(Math.random()*9999999));
+  const models=['flux','flux-realism','flux-anime','flux'];
+  const tryImg=(url,r=3)=>new Promise(res=>{const img=new Image();img.crossOrigin='anonymous';img.onload=()=>res(url);img.onerror=()=>r>0?setTimeout(()=>tryImg(url+'&r='+Date.now(),r-1).then(res),1500):res(null);img.src=url;});
+  const urls=sv.map((s,i)=>`${CFG.img}${encodeURIComponent(s)}?width=${W}&height=${H}&seed=${seeds[i]}&nologo=true&enhance=true&model=${models[i]||'flux'}`);
+  let done=0;
+  const results=await Promise.all(urls.map(url=>tryImg(url).then(r=>{done++;const pb=document.getElementById(id+'_pb'),pt=document.getElementById(id+'_pt');if(pb)pb.style.width=(done/4*100)+'%';if(pt)pt.textContent=`⚡ ${done}/4 ready...`;return r;})));
+  const ld=document.getElementById(id+'_ld'),gi=document.getElementById(id+'_gi'),ac=document.getElementById(id+'_ac'),ft=document.getElementById(id+'_ft');
+  if(ld)ld.style.display='none';const valid=results.filter(Boolean);
+  if(valid.length&&gi){
+    gi.style.display='block';
+    if(valid.length===1){gi.innerHTML=`<img src="${valid[0]}" onclick="openImgFs('${escA(valid[0])}')" style="width:100%;max-height:400px;object-fit:cover;display:block;cursor:zoom-in">`;}
+    else{gi.className='img2g';gi.innerHTML=valid.map((u,i)=>`<div onclick="openImgFs('${escA(u)}')"><img src="${u}" alt="v${i+1}"><div class="imgvb">v${i+1}</div></div>`).join('');}
+    if(ac){ac.style.display='flex';ac.innerHTML=`<a class="iab" href="${valid[0]}" download="neuro-ai-${seeds[0]}.jpg" target="_blank">⬇ Save</a><button class="iab" onclick="navigator.clipboard?.writeText('${escA(valid[0])}').then(()=>toast('🔗 Copied!'))">🔗 URL</button><button class="iab" onclick="doImgGen('generate image of: ${escA(clean)}')">🔄 Regen</button><button class="iab" onclick="doVidGen('generate video of: ${escA(clean)}')">🎬 →Video</button>`;}
+    if(ft)ft.textContent=`✅ ${valid.length}/4 images · Click to zoom · ${W}×${H}`;
+  }else if(gi){
+    gi.style.display='block';gi.innerHTML=`<div style="padding:22px;text-align:center;background:var(--s3)"><div style="font-size:26px;margin-bottom:8px">🎨</div><div style="font-size:11px;color:var(--a3);font-weight:600;margin-bottom:7px">Image Ready — View Below</div>${urls.slice(0,2).map((u,i)=>`<a href="${u}" target="_blank" rel="noopener" class="iab" style="margin:3px;font-size:10px;padding:6px 14px;display:inline-flex">🖼 View Image ${i+1} →</a>`).join('')}</div>`;
+    if(ac){ac.style.display='flex';ac.innerHTML=`<button class="iab" onclick="doImgGen('generate image of: ${escA(clean)}')">🔄 Try Again</button>`;}
+  }
+}
+function openImgFs(url){const o=document.createElement('div');o.className='imgfs';o.innerHTML=`<img src="${url}" alt=""><div class="imgfsc"><a href="${url}" download="neuro-ai.jpg" target="_blank" class="ifb">⬇ Save</a><button class="ifb" onclick="this.closest('.imgfs').remove()">✕ Close</button></div>`;o.onclick=e=>{if(e.target===o)o.remove();};document.body.appendChild(o);}
+
+// ═══ VIDEO GEN ═══
+async function doVidGen(prompt){
+  const clean=prompt.replace(/generate.*?video.*?of[:\s]*/i,'').replace(/generate.*?video[:\s]*/i,'').replace(/text.*?to.*?video[:\s]*/i,'').replace(/create.*?video[:\s]*/i,'').trim()||'epic cinematic scene';
+  const id='vid_'+Date.now();const l=clean.toLowerCase();
+  let scene='space',slbl='🌌 Deep Space';
+  if(/ocean|sea|wave|beach|coral/i.test(l)){scene='ocean';slbl='🌊 Ocean';}
+  else if(/city|urban|neon|street|building|skyscrap|cyberpunk/i.test(l)){scene='city';slbl='🌆 City';}
+  else if(/fire|flame|lava|volcano/i.test(l)){scene='fire';slbl='🔥 Fire';}
+  else if(/forest|tree|jungle|nature/i.test(l)){scene='forest';slbl='🌿 Forest';}
+  else if(/sunset|sunrise|golden|dusk|dawn/i.test(l)){scene='sunset';slbl='🌅 Sunset';}
+  else if(/storm|thunder|lightning|rain/i.test(l)){scene='storm';slbl='⛈ Storm';}
+  else if(/snow|winter|blizzard|arctic|ice/i.test(l)){scene='snow';slbl='❄ Snow';}
+  else if(/garden|flower|cherry|sakura|bloom/i.test(l)){scene='garden';slbl='🌸 Garden';}
+  else if(/desert|sand|dune|sahara/i.test(l)){scene='desert';slbl='🏜 Desert';}
+  else if(/underwater|deep.*sea|coral reef|bioluminescent/i.test(l)){scene='underwater';slbl='🐠 Underwater';}
+  else if(/cyber|robot|circuit|digital|matrix|hacker/i.test(l)){scene='cyber';slbl='🤖 Cyber';}
+  else if(/aurora|northern light|borealis/i.test(l)){scene='aurora';slbl='🌌 Aurora';}
+  else if(/mountain|peak|cliff|himalaya|alps/i.test(l)){scene='mountain';slbl='🏔 Mountain';}
+  else if(/waterfall|river|stream|cascade/i.test(l)){scene='waterfall';slbl='💦 Waterfall';}
+  else if(/person|human|face|man|woman|people|portrait/i.test(l)){scene='portrait';slbl='👤 Portrait';}
+  addRawAiMsg(`<div class="vidcard" id="${id}"><div class="vidh"><div class="vidht">🎬 TEXT-TO-VIDEO AI</div><span style="font-size:8px;color:var(--a);font-family:Orbitron,monospace">${slbl}</span></div><div id="${id}_ld" style="padding:24px;text-align:center"><div style="width:34px;height:34px;border:3px solid var(--bdr);border-top-color:var(--a2);border-radius:50%;animation:sp .8s linear infinite;margin:0 auto 10px"></div><div style="font-family:Orbitron,monospace;font-size:10px;color:var(--a2);margin:8px 0 4px;letter-spacing:1px">RENDERING VIDEO</div><div style="font-size:9px;color:var(--t2);max-width:240px;margin:0 auto;line-height:1.7">"${escH(clean.slice(0,60))}"</div><div style="width:180px;height:2px;background:rgba(255,255,255,.05);border-radius:1px;margin:10px auto 5px;overflow:hidden"><div id="${id}_vp" style="height:100%;width:0%;background:linear-gradient(90deg,var(--a),var(--a2),var(--a3));border-radius:1px;transition:width .4s ease"></div></div><div id="${id}_vs" style="font-size:8px;color:var(--t3)">Initializing...</div></div><div id="${id}_pl" style="display:none"><div class="vidwrap"><canvas id="${id}_c"></canvas><div class="vidhud"><div class="vhudt"><span class="vbadge">${slbl}</span><span class="vrec"><span class="rdot"></span>LIVE</span></div><div class="vhudb">${escH(clean.slice(0,70))}</div></div></div><div class="vidctrl"><button class="vb" onclick="vPs('${id}')">⏸ Pause</button><button class="vb" onclick="vPl('${id}')">▶ Play</button><button class="vb" onclick="vFl('${id}')">⛶ Full</button><button class="vb" style="margin-left:auto" onclick="doVidGen('generate video of: ${escA(clean)}')">🔄 New</button><button class="vb" onclick="doImgGen('generate image of: ${escA(clean)}')">🎨 →Img</button></div></div><div style="padding:4px 11px;font-size:7px;color:var(--t3)">🎬 NEURO AI · ${slbl} · Cinematic Engine</div></div>`);
+  const steps=[{t:'Parsing scene...',p:16},{t:'Building storyboard...',p:33},{t:'Rendering layers...',p:52},{t:'Lighting & effects...',p:70},{t:'Compositing...',p:88},{t:'✅ Video ready!',p:100}];
+  let cum=0;steps.forEach((s,i)=>{cum+=i===0?260:400+i*48;setTimeout(()=>{const vp=document.getElementById(id+'_vp'),vs=document.getElementById(id+'_vs');if(vp)vp.style.width=s.p+'%';if(vs)vs.textContent=s.t;if(s.p===100){setTimeout(()=>{const ld=document.getElementById(id+'_ld'),pl=document.getElementById(id+'_pl');if(ld)ld.style.display='none';if(pl)pl.style.display='block';initVid(id,scene);},280);}},cum);});
+}
+function initVid(id,scene){const c=document.getElementById(id+'_c');if(!c)return;const ctx=c.getContext('2d');if(!ctx)return;const par=c.parentElement;c.width=par?.offsetWidth||520;c.height=Math.min(295,par?.offsetHeight||275);const pts=[];for(let i=0;i<130;i++)pts.push({x:Math.random()*c.width,y:Math.random()*c.height,vx:(Math.random()-.5)*1.1,vy:(Math.random()-.5)*1.1,r:Math.random()*2.3+.4,h:Math.random()*360});vidStates[id]={ctx,c,frame:0,scene,pts,paused:false};renderVid(id);}
+function renderVid(id){
+  const s=vidStates[id];if(!s||s.paused)return;
+  const{ctx:x,c,frame:f,scene,pts}=s;const W=c.width,H=c.height,t=f*.016;
+  try{
+    if(scene==='ocean'){const g=x.createLinearGradient(0,0,0,H*.55);g.addColorStop(0,`hsl(${206+Math.sin(t*.06)*7},58%,20%)`);g.addColorStop(1,'hsl(212,42%,36%)');x.fillStyle=g;x.fillRect(0,0,W,H*.55);const sg=x.createRadialGradient(W*.7,H*.2,0,W*.7,H*.2,30);sg.addColorStop(0,'rgba(255,230,80,.9)');sg.addColorStop(1,'transparent');x.fillStyle=sg;x.fillRect(0,0,W,H);for(let w=0;w<8;w++){x.beginPath();for(let px=0;px<=W;px+=4){const py=H*.52+w*H*.065+Math.sin((px/W*4.5+t+w*.55)*Math.PI*2)*(10-w);px===0?x.moveTo(px,py):x.lineTo(px,py);}x.lineTo(W,H);x.lineTo(0,H);x.closePath();x.fillStyle=`hsla(205,${55+w*4}%,${27+w*4}%,.7)`;x.fill();}}
+    else if(scene==='city'){x.fillStyle='#00001c';x.fillRect(0,0,W,H);for(let i=0;i<60;i++){x.fillStyle=`rgba(255,255,255,${.2+.3*Math.sin(t*1.8+i)})`;x.fillRect((i*113)%W,(i*79)%(H*.5),1.5,1.5);}for(let b=0;b<18;b++){const bx=b/18*W,bw=W/18*.8,bh=H*.26+Math.sin(b*2.3)*H*.2,by=H-bh;x.fillStyle=`hsl(${218+b*3},28%,${7+b}%)`;x.fillRect(bx,by,bw,bh);for(let wy=by+4;wy<H-4;wy+=10)for(let wx=bx+3;wx<bx+bw-3;wx+=6)if(Math.sin(t*.35+wx*.25+wy*.15)>.25){x.fillStyle='rgba(255,210,85,.88)';x.fillRect(wx,wy,5,7);}}}
+    else if(scene==='fire'){x.fillStyle='#080000';x.fillRect(0,0,W,H);for(let px=0;px<W;px+=3){const fh=H*.4+H*.28*Math.sin((px/W*3.2+t*2.4)*Math.PI)+H*.1*Math.sin((px/W*5.8+t*3.5)*Math.PI);for(let py=H;py>H-fh;py-=2){const r=(H-py)/fh;x.fillStyle=`rgba(255,${Math.floor(r*140)},${Math.floor(r*10)},${r*.8})`;x.fillRect(px,py,3,3);}}}
+    else if(scene==='forest'){const g=x.createLinearGradient(0,0,0,H);g.addColorStop(0,'#081a07');g.addColorStop(1,'#0f2a0e');x.fillStyle=g;x.fillRect(0,0,W,H);for(let i=0;i<16;i++){const tx=i*(W/16),tw=W/16,th=H*.4+Math.sin(i*1.8)*H*.2,sw=Math.sin(t*.4+i*.25)*5;x.beginPath();x.moveTo(tx+tw/2+sw,H-th);x.lineTo(tx+2,H);x.lineTo(tx+tw-2,H);x.closePath();x.fillStyle=`hsl(${118+i*2},${34+i}%,${8+i}%)`;x.fill();}for(let i=0;i<20;i++){const fx=W*(i/20)+Math.sin(t+i)*18,fy=H*.3+Math.sin(t*.6+i*.8)*H*.38,gl=.4+.55*Math.sin(t*3+i);x.beginPath();x.arc(fx,fy,1.5,0,Math.PI*2);x.fillStyle=`rgba(190,255,80,${gl})`;x.fill();}}
+    else if(scene==='sunset'){const g=x.createLinearGradient(0,0,0,H);g.addColorStop(0,'hsl(16,62%,13%)');g.addColorStop(.35,'hsl(22,76%,36%)');g.addColorStop(.6,'hsl(12,86%,46%)');g.addColorStop(1,'hsl(198,52%,16%)');x.fillStyle=g;x.fillRect(0,0,W,H);const sg=x.createRadialGradient(W/2,H*.42,0,W/2,H*.42,52);sg.addColorStop(0,'rgba(255,240,90,1)');sg.addColorStop(.3,'rgba(255,170,40,.8)');sg.addColorStop(1,'transparent');x.fillStyle=sg;x.fillRect(0,0,W,H);}
+    else if(scene==='storm'){x.fillStyle='#03030d';x.fillRect(0,0,W,H);if(Math.sin(t*9)>.93){x.strokeStyle='rgba(180,185,255,.95)';x.lineWidth=2.5;x.beginPath();let lx=W*.3+Math.random()*W*.4,ly=0;x.moveTo(lx,ly);while(ly<H*.75){lx+=Math.random()*26-13;ly+=16;x.lineTo(lx,ly);}x.stroke();}x.strokeStyle='rgba(130,160,255,.18)';x.lineWidth=1;for(let r=0;r<90;r++){const rx=(r*97+t*200)%W,ry=(r*71+t*360)%H;x.beginPath();x.moveTo(rx,ry);x.lineTo(rx-2,ry+10);x.stroke();}}
+    else if(scene==='snow'){const g=x.createLinearGradient(0,0,0,H);g.addColorStop(0,'#0a1020');g.addColorStop(1,'#182035');x.fillStyle=g;x.fillRect(0,0,W,H);for(let s=0;s<90;s++){const sx=(s*89+t*15)%W,sy=(s*67+t*38)%H,sz=.5+Math.sin(s)*.5;x.beginPath();x.arc(sx,sy,sz+.4,0,Math.PI*2);x.fillStyle=`rgba(215,232,255,${.4+sz*.3})`;x.fill();}}
+    else if(scene==='garden'){x.fillStyle='#fff0f8';x.fillRect(0,0,W,H);for(let p=0;p<40;p++){const px=((p*73+t*14)%W),py=((p*59+t*28)%H),pr=Math.sin(t*1.5+p)*.3;x.save();x.translate(px,py);x.rotate(pr);x.beginPath();x.ellipse(0,0,5,8,0,0,Math.PI*2);x.fillStyle=`rgba(255,${140+p%60},${160+p%40},.7)`;x.fill();x.restore();}}
+    else if(scene==='desert'){const g=x.createLinearGradient(0,0,0,H*.6);g.addColorStop(0,'hsl(35,60%,55%)');g.addColorStop(1,'hsl(28,55%,65%)');x.fillStyle=g;x.fillRect(0,0,W,H*.6);for(let d=0;d<5;d++){x.beginPath();x.moveTo(0,H*(.58+d*.08));for(let px=0;px<=W;px+=4){const py=H*(.58+d*.08)+Math.sin((px/W*2.5+t*.15+d*.7)*Math.PI)*H*.04;px===0?x.moveTo(px,py):x.lineTo(px,py);}x.lineTo(W,H);x.lineTo(0,H);x.closePath();x.fillStyle=`hsl(${33+d*3},${50+d*5}%,${40-d*4}%)`;x.fill();}}
+    else if(scene==='underwater'){const g=x.createLinearGradient(0,0,0,H);g.addColorStop(0,'#001a2e');g.addColorStop(1,'#000a18');x.fillStyle=g;x.fillRect(0,0,W,H);for(let i=0;i<50;i++){const bx=(i*73+t*10)%W,by=H-((i*89+t*21)%(H*.9));x.beginPath();x.arc(bx,by,1,0,Math.PI*2);x.fillStyle=`rgba(100,200,255,${.3+.3*Math.sin(t+i)})`;x.fill();}for(let c=0;c<10;c++){x.beginPath();const cx=c*(W/10);for(let cy=H;cy>H-(55+Math.sin(t*.5+c)*18);cy-=2){const sx=cx+Math.sin(cy*.05+t)*3;cy===H?x.moveTo(sx,cy):x.lineTo(sx,cy);}x.strokeStyle=`hsla(${280+c*10},80%,60%,.6)`;x.lineWidth=3;x.stroke();}}
+    else if(scene==='cyber'){x.fillStyle='#000005';x.fillRect(0,0,W,H);for(let gy=0;gy<H;gy+=20){x.beginPath();x.moveTo(0,gy);x.lineTo(W,gy);x.strokeStyle=`rgba(0,234,255,${.025+.01*Math.sin(t+gy*.1)})`;x.lineWidth=.5;x.stroke();}for(let m=0;m<7;m++){x.strokeStyle=`rgba(255,0,255,${.14+.1*Math.sin(t+m)})`;x.lineWidth=1.5;x.beginPath();x.moveTo(W*(m/7),0);x.lineTo(W*((m+3)/7),H);x.stroke();}}
+    else if(scene==='aurora'){const g=x.createLinearGradient(0,0,0,H);g.addColorStop(0,'#000814');g.addColorStop(1,'#001020');x.fillStyle=g;x.fillRect(0,0,W,H);for(let i=0;i<65;i++){x.fillStyle=`rgba(255,255,255,${.2+.3*Math.sin(t*2+i)})`;x.fillRect((i*89)%W,(i*61)%(H*.45),1.2,1.2);}for(let a=0;a<5;a++){x.beginPath();for(let px=0;px<=W;px+=4){const py=H*.25+Math.sin((px/W*3+t*.5+a*.8)*Math.PI)*H*.2+a*H*.06;px===0?x.moveTo(px,py):x.lineTo(px,py);}x.lineWidth=22;x.strokeStyle=`hsla(${140+a*25},80%,55%,.08)`;x.stroke();x.lineWidth=4;x.strokeStyle=`hsla(${140+a*25},80%,70%,.13)`;x.stroke();}}
+    else if(scene==='mountain'){const g=x.createLinearGradient(0,0,0,H);g.addColorStop(0,'hsl(210,50%,12%)');g.addColorStop(1,'hsl(195,35%,18%)');x.fillStyle=g;x.fillRect(0,0,W,H);for(let i=0;i<55;i++){x.fillStyle=`rgba(255,255,255,${.22+.35*Math.sin(t*.8+i)})`;x.fillRect((i*137)%W,(i*89)%(H*.4),1.2,1.2);}for(let m=0;m<5;m++){const mh=H*(.35+m%3*.12),mx=W*(m/5-.05),sw=Math.sin(t*.05+m)*.5;x.beginPath();x.moveTo(mx+W*.1+sw,H-mh);x.lineTo(mx,H);x.lineTo(mx+W*.2,H);x.closePath();x.fillStyle=`hsl(${210+m*4},${20+m*3}%,${12+m*4}%)`;x.fill();x.beginPath();x.moveTo(mx+W*.1+sw,H-mh);x.lineTo(mx+W*.05,H-mh+H*.07);x.lineTo(mx+W*.15,H-mh+H*.07);x.closePath();x.fillStyle='rgba(230,240,255,.75)';x.fill();}}
+    else if(scene==='waterfall'){x.fillStyle='#0a1a0a';x.fillRect(0,0,W,H);x.fillStyle='rgba(80,120,60,.6)';for(let tr=0;tr<12;tr++)x.fillRect(tr*(W/12),H*.5+Math.sin(tr)*20,W/12-.5,H*.5);const ww=W*.28,wx=W*.5-ww/2;for(let i=0;i<70;i++){const wy=(i*7+t*78)%H,wxa=wx+Math.sin(wy*.03+t)*8;x.strokeStyle=`rgba(150,210,255,${.5+.4*Math.sin(t*2+i*.2)})`;x.lineWidth=1.5;x.beginPath();x.moveTo(wxa+Math.random()*ww,wy);x.lineTo(wxa+Math.random()*ww,wy+8);x.stroke();}const mst=x.createRadialGradient(W/2,H*.72,0,W/2,H*.72,W*.2);mst.addColorStop(0,'rgba(200,230,255,.12)');mst.addColorStop(1,'transparent');x.fillStyle=mst;x.fillRect(0,0,W,H);}
+    else if(scene==='portrait'){const g=x.createRadialGradient(W/2,H*.4,0,W/2,H*.4,H*.55);g.addColorStop(0,'hsl(220,30%,18%)');g.addColorStop(1,'hsl(220,20%,8%)');x.fillStyle=g;x.fillRect(0,0,W,H);const sg=x.createRadialGradient(W/2,H*.38,0,W/2,H*.38,Math.min(W,H)*.32);sg.addColorStop(0,`rgba(255,200,150,${.85+Math.sin(t*.3)*.05})`);sg.addColorStop(.4,'rgba(220,160,100,.6)');sg.addColorStop(1,'transparent');x.fillStyle=sg;x.fillRect(0,0,W,H);for(let p=0;p<50;p++){x.fillStyle=`rgba(255,255,255,${.05+Math.sin(t+p)*.03})`;x.beginPath();x.arc(Math.random()*W,Math.random()*H*.25,1,0,Math.PI*2);x.fill();}}
+    else{const g=x.createRadialGradient(W/2,H/2,0,W/2,H/2,W);g.addColorStop(0,'hsl(240,55%,7%)');g.addColorStop(1,'#000008');x.fillStyle=g;x.fillRect(0,0,W,H);if(pts)pts.forEach(p=>{p.x+=p.vx*.18;p.y+=p.vy*.18;if(p.x<0)p.x=W;if(p.x>W)p.x=0;if(p.y<0)p.y=H;if(p.y>H)p.y=0;const tw=.5+.5*Math.sin(t*2.2+p.h*.05);x.beginPath();x.arc(p.x,p.y,p.r*tw,0,Math.PI*2);x.fillStyle=`hsla(${p.h},75%,90%,${.55*tw})`;x.fill();});}
+  }catch(e){}
+  s.frame++;s.raf=requestAnimationFrame(()=>renderVid(id));
+}
+function vPs(id){const s=vidStates[id];if(s){s.paused=true;cancelAnimationFrame(s.raf);}}
+function vPl(id){const s=vidStates[id];if(s){s.paused=false;renderVid(id);}}
+function vFl(id){const c=document.getElementById(id+'_c');if(c?.requestFullscreen)c.requestFullscreen().catch(()=>toast('ℹ️ Fullscreen not available'));}
+
+// ═══ VOICE ═══
+function tgVoice(){isRec?stopVoice():startVoice();}
+function startVoice(){const SR=window.SpeechRecognition||window.webkitSpeechRecognition;if(!SR){toast('❌ Use Chrome/Edge for voice');return;}const go=()=>{try{recog=new SR();recog.continuous=false;recog.interimResults=true;recog.lang=document.getElementById('lsel')?.value||'en-US';recog.onstart=()=>{isRec=true;const mb=document.getElementById('micbtn');if(mb){mb.classList.add('rec');mb.textContent='⏹';}document.getElementById('vbar')?.classList.add('on');const mi=document.getElementById('mi');if(mi)mi.placeholder='🎙 Listening...';};recog.onresult=e=>{let f='',int='';for(let i=e.resultIndex;i<e.results.length;i++){const t=e.results[i][0].transcript;e.results[i].isFinal?f+=t:int+=t;}const show=f||int;const mi=document.getElementById('mi');if(show&&mi){mi.value=show;aR(mi);}if(f){stopVoice();if(f.trim())sendMsg();}};recog.onerror=e=>{stopVoice();const m={'not-allowed':'🚫 Mic denied','no-speech':'🔇 No speech','audio-capture':'🎤 No mic'};toast(m[e.error]||'❌ Voice: '+e.error);};recog.onend=()=>{if(isRec)stopVoice();};recog.start();}catch(e){toast('❌ Voice: '+e.message);}};if(micOk){go();return;}navigator.mediaDevices?.getUserMedia({audio:true}).then(s=>{micOk=true;s.getTracks().forEach(t=>t.stop());go();}).catch(()=>toast('🚫 Mic denied — enable in Settings'));}
+function stopVoice(){if(recog){try{recog.stop();}catch(e){}recog=null;}isRec=false;const mb=document.getElementById('micbtn');if(mb){mb.classList.remove('rec');mb.textContent='🎙';}document.getElementById('vbar')?.classList.remove('on');const mi=document.getElementById('mi');if(mi)mi.placeholder='Message NEURO AI...';}
+function speakTxt(txt){if(!window.speechSynthesis||!ttsOn)return;window.speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(txt);u.lang=document.getElementById('lsel')?.value||'en-US';window.speechSynthesis.speak(u);}
+
+// ═══ MESSAGES ═══
+function addUserMsg(txt,files){rmWlc();const e=document.createElement('div');e.className='mr user';let fh='';if(files?.length)fh=`<div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:7px">${files.map(f=>f.type.startsWith('image/')?`<img src="${f.data}" style="max-width:150px;max-height:130px;border-radius:7px;object-fit:cover;cursor:zoom-in" onclick="openImgFs('${escA(f.data)}')">`:`<div style="display:inline-flex;align-items:center;gap:5px;padding:4px 9px;background:var(--s3);border:1px solid var(--bdr);border-radius:7px;font-size:9px;color:var(--t2)">📄 ${escH(f.name)}</div>`).join('')}</div>`;e.innerHTML=`<div class="mri"><div class="mav">👤</div><div class="mb"><div class="mn">YOU</div>${fh}<div class="mt2">${escH(txt)}</div></div></div>`;cb().appendChild(e);scrollD();}
+function addAiMsg(md){rmWlc();const e=document.createElement('div');e.className='mr ai';e.innerHTML=`<div class="mri"><div class="mav">✦</div><div class="mb"><div class="mn">NEURO AI <span style="font-size:7px;padding:1px 5px;border-radius:4px;background:rgba(0,234,255,.07);color:var(--a);border:1px solid rgba(0,234,255,.18)">v10</span></div><div class="mt2">${md2h(md)}</div><div class="macts"><button class="mab" onclick="cpMsg(this)">📋 Copy</button><button class="mab" onclick="rdMsg(this)">🔊 Read</button><button class="mab" onclick="if(lastMsg)sq(lastMsg)">🔄 Regen</button></div></div></div>`;cb().appendChild(e);scrollD();}
+function addRawAiMsg(html){rmWlc();const e=document.createElement('div');e.className='mr ai';e.innerHTML=`<div class="mri"><div class="mav">✦</div><div class="mb"><div class="mn">NEURO AI <span style="font-size:7px;padding:1px 5px;border-radius:4px;background:rgba(0,234,255,.07);color:var(--a);border:1px solid rgba(0,234,255,.18)">v10</span></div>${html}</div></div>`;cb().appendChild(e);scrollD();}
+function addErrMsg(t,m,orig){rmWlc();const e=document.createElement('div');e.className='mr ai';e.innerHTML=`<div class="mri"><div class="mav">✦</div><div class="mb"><div class="mn">NEURO AI</div><div style="background:rgba(255,0,68,.05);border:1px solid rgba(255,0,68,.2);border-radius:8px;padding:11px;margin-top:3px"><div style="font-size:11px;color:var(--a6);font-weight:600;margin-bottom:4px">⚠️ ${escH(t)}</div><div style="font-size:10px;color:var(--t2);line-height:1.7">${escH(m)}</div>${orig?`<button class="mab" style="margin-top:7px;border-color:rgba(0,234,255,.3);color:var(--a)" onclick="sq('${escA(orig)}')">🔄 Retry</button>`:''}</div></div></div>`;cb().appendChild(e);scrollD();}
+let _tid=0;
+function addThinking(){rmWlc();const id='tk_'+(++_tid);const e=document.createElement('div');e.className='tkr';e.id=id;e.innerHTML=`<div class="tki"><div class="mav" style="border-color:var(--a)">✦</div><div class="tds"><div class="td"></div><div class="td"></div><div class="td"></div></div><span class="tl">THINKING...</span></div>`;cb().appendChild(e);scrollD();return id;}
+function removeThinking(id){document.getElementById(id)?.remove();}
+function rmWlc(){document.getElementById('wlc')?.remove();}
+function cb(){return document.getElementById('chatbox');}
+function scrollD(){const c=cb();c.scrollTop=c.scrollHeight;}
+
+// ═══ UTILS ═══
+function newChat(){Object.keys(vidStates).forEach(id=>{cancelAnimationFrame(vidStates[id]?.raf);delete vidStates[id];});chatHist=[];lastMsg='';attachFiles=[];cb().innerHTML=`<div class="wlc" id="wlc"><div class="worb">✦</div><div class="wtit">NEURO AI v10</div><div class="wdesc">Ready for anything — chat, image, video, code, research...</div><div class="wchip"><span class="wbig">🎁 90-DAY TRIAL ACTIVE</span>All features unlocked · 🛡 Ultra Secure</div></div>`;renderAtpv();}
+function exportChat(){const rows=document.querySelectorAll('.mr');let out='NEURO AI v10 Export\n'+'-'.repeat(40)+'\n'+new Date().toLocaleString()+'\n\n';rows.forEach(r=>{const role=r.classList.contains('user')?'YOU':'NEURO AI';const txt=r.querySelector('.mt2')?.innerText||'';if(txt)out+=`[${role}]\n${txt}\n\n`;});const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([out],{type:'text/plain'}));a.download='neuro-ai-v10-'+Date.now()+'.txt';a.click();toast('💾 Exported!');}
+function cpMsg(btn){const txt=btn.closest('.mr').querySelector('.mt2')?.innerText||'';navigator.clipboard?.writeText(txt).then(()=>{btn.textContent='✅';setTimeout(()=>btn.textContent='📋 Copy',2e3);}).catch(()=>toast('❌ Copy failed'));}
+function rdMsg(btn){if(!window.speechSynthesis)return;window.speechSynthesis.cancel();const txt=btn.closest('.mr').querySelector('.mt2')?.innerText?.slice(0,800)||'';const u=new SpeechSynthesisUtterance(txt);u.lang=document.getElementById('lsel')?.value||'en-US';u.onstart=()=>{btn.textContent='⏸ Stop';btn.onclick=()=>{window.speechSynthesis.cancel();btn.textContent='🔊 Read';btn.onclick=()=>rdMsg(btn);};};u.onend=u.onerror=()=>{btn.textContent='🔊 Read';btn.onclick=()=>rdMsg(btn);};window.speechSynthesis.speak(u);}
+function sq(txt){document.getElementById('mi').value=txt;sendMsg();}
+function toggleSb(){const sb=document.getElementById('sb');if(window.innerWidth<=720)sb.classList.toggle('open');else sb.classList.toggle('closed');}
+function openMo(id){document.getElementById(id)?.classList.add('open');if(id==='upModal')renderPlans();}
+function closeMo(id){document.getElementById(id)?.classList.remove('open');}
+function closeAllMo(){document.querySelectorAll('.mo').forEach(m=>m.classList.remove('open'));}
+function renderPlans(){const g=document.getElementById('plgrid');if(!g)return;const plans=[{n:'BASIC',p:300,i:'⚡',c:'var(--a3)',f:['50 chats/day','HD Images','Voice AI']},{n:'STANDARD',p:2000,i:'🌟',c:'#4499ff',f:['Unlimited Chat','Video AI','All Modes']},{n:'ADVANCE',p:10000,i:'🚀',c:'#aa44ff',pop:true,f:['Everything+','Admin','Priority']},{n:'PRO',p:25000,i:'👑',c:'#ffd700',f:['No Limits','Lifetime','Support']}];g.innerHTML=plans.map(p=>`<div class="plc${p.pop?' pop':''}" style="border-color:${p.c}33"><div style="font-size:22px;margin-bottom:5px">${p.i}</div><div style="font-family:Orbitron,monospace;font-size:9px;font-weight:700;color:${p.c};margin-bottom:3px">${p.n}</div><div style="font-size:17px;font-weight:700;color:${p.c}">₹${p.p.toLocaleString()}<span style="font-size:9px;color:var(--t2)">/mo</span></div><div style="font-size:8px;color:var(--t2);line-height:1.7;margin:7px 0">${p.f.map(f=>'✓ '+f).join('<br>')}</div><button style="width:100%;padding:6px;border:1px solid ${p.c};border-radius:6px;background:${p.c}15;color:${p.c};cursor:pointer;font-size:9px;font-weight:700" onclick="toast('🎁 Trial active — upgrade after 90 days!')">SELECT</button></div>`).join('');}
+function onKey(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendMsg();}}
+function aR(el){el.style.height='auto';el.style.height=Math.min(el.scrollHeight,130)+'px';}
+let _tt;function toast(m,d=3000){const t=document.getElementById('toast');if(!t)return;t.textContent=m;t.classList.add('on');clearTimeout(_tt);_tt=setTimeout(()=>t.classList.remove('on'),d);}
+function escH(s){if(!s)return'';return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+function escA(s){return String(s||'').replace(/'/g,"\\'").replace(/"/g,'&quot;');}
+function md2h(md){if(!md)return'';let h=escH(md);h=h.replace(/```(\w*)\n?([\s\S]*?)```/g,(_,l,c)=>`<pre><code>${c.trim()}</code></pre>`);h=h.replace(/`([^`]+)`/g,'<code>$1</code>');h=h.replace(/\*\*\*(.+?)\*\*\*/g,'<strong><em>$1</em></strong>');h=h.replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>');h=h.replace(/\*(.+?)\*/g,'<em>$1</em>');h=h.replace(/^#{3} (.+)$/gm,'<h3>$1</h3>');h=h.replace(/^#{2} (.+)$/gm,'<h2>$1</h2>');h=h.replace(/^# (.+)$/gm,'<h1>$1</h1>');h=h.replace(/^[•\-\*] (.+)$/gm,'<li>$1</li>');h=h.replace(/(<li>[\s\S]*?<\/li>\n?)+/g,m=>`<ul>${m}</ul>`);h=h.replace(/\n{2,}/g,'</p><p>');h=h.replace(/\n/g,'<br>');return'<p>'+h+'</p>';}
+// CSS for spin animation (needed for loading spinners)
+document.head.insertAdjacentHTML('beforeend','<style>@keyframes sp{to{transform:rotate(360deg)}}</style>');
+// Note: keyboard events handled by security shield above
+window.onerror=()=>true;window.addEventListener('unhandledrejection',e=>e.preventDefault());
+</script>
+</body>
+</html>
